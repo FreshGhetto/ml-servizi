@@ -1,0 +1,126 @@
+{
+  "Nav": {
+    "services": "Services",
+    "portfolio": "Work",
+    "insights": "Insights",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Request a quote"
+  },
+  "Home": {
+    "heroTitle": "Technical services for surveying, construction accounting and 3D modelling",
+    "heroSubtitle": "Based in Veneto (Italy). Available for collaborations and travel, including Switzerland (CH).",
+    "primaryCta": "View services",
+    "secondaryCta": "Contact me",
+    "pillarsTitle": "What I do",
+    "pillars": {
+      "survey": {
+        "title": "Surveying & Geomatics",
+        "desc": "Photogrammetry, drone surveys, CAD deliverables, point clouds and technical documentation."
+      },
+      "accounting": {
+        "title": "Construction accounting",
+        "desc": "BOQs, progress statements, price analysis, cost control and support to site management."
+      },
+      "modeling": {
+        "title": "3D & Archicad",
+        "desc": "Clean technical models and minimal renders for decisions and project communication."
+      }
+    },
+    "servicesTitle": "Key services",
+    "servicesDesc": "A curated selection of the most requested services, with deliverables and use cases.",
+    "insightsTitle": "Technical insights",
+    "insightsDesc": "Plain-language explanations of photogrammetry, thermal surveys and survey methods.",
+    "readInsight": "Read",
+    "workTitle": "Selected work",
+    "workDesc": "Examples and case studies (publish only what you can share).",
+    "seeWork": "View",
+    "allWork": "All work",
+    "hoursLabel": "Hours",
+    "hoursValue": "Mon – Fri • 08:30 – 12:30 / 14:00 – 18:00",
+    "openInMaps": "Open in Google Maps"
+  },
+  "Common": {
+    "learnMore": "Learn more",
+    "requestQuote": "Request a quote",
+    "backTo": "Back to",
+    "contactTitle": "Get in touch",
+    "contactDesc": "Send a message for a quote or to check whether a service fits your case.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Area",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company (optional)",
+      "topic": "Service",
+      "message": "Message",
+      "send": "Send",
+      "sent": "Message sent"
+    }
+  },
+  "Services": {
+    "title": "Services",
+    "subtitle": "Select a service to see deliverables, workflow and use cases.",
+    "categories": {
+      "survey": "Surveying & Geomatics",
+      "drone": "Drone & Photogrammetry",
+      "thermal": "Thermal surveys",
+      "accounting": "Construction accounting",
+      "modeling": "3D & Archicad"
+    }
+  },
+  "Insights": {
+    "title": "Insights",
+    "subtitle": "Simple (yet technical) explanations to understand tools and methods.",
+    "read": "Read"
+  },
+  "Portfolio": {
+    "title": "Work",
+    "subtitle": "Case studies and selected activities. (Share only what you can publish).",
+    "viewCase": "View case study"
+  },
+  "About": {
+    "title": "About",
+    "subtitle": "Surveyor (Geom. in Italy) – technical services for sites, surveys and modelling.",
+    "body": "Add a concrete bio: experience, project types, approach, tools and availability."
+  },
+  "Footer": {
+    "about1": "Surveyor – site surveys, construction accounting, 3D modeling.",
+    "about2": "Based in Veneto (Italy) · Available for travel and cross-border collaborations.",
+    "menuTitle": "Menu",
+    "services": "Services",
+    "work": "Work",
+    "insights": "Insights",
+    "contact": "Contact",
+    "contactsTitle": "Contacts",
+    "email": "Email",
+    "phone": "Phone",
+    "vatPec": "VAT / PEC",
+    "privacy": "Privacy",
+    "rights": "All rights reserved."
+  },
+  "Search": {
+    "placeholder": "Search services, work, guides…",
+    "tip": "Tip: Ctrl + K",
+    "none": "No results.",
+    "hintService": "Service",
+    "hintInsight": "Guide",
+    "hintWork": "Work"
+  },
+  "Metadata": {
+    "title": "ML Servizi",
+    "description": "Technical services: surveying, construction accounting, 3D modeling."
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Requests, quotes and collaborations.",
+    "lead": "Fill in the form: your email client will open with a pre-filled message (no account required).",
+    "ctaEmail": "Send an email",
+    "ctaMaps": "Open in Google Maps",
+    "hoursLabel": "Hours",
+    "hoursValue": "Mon – Fri • 08:30 – 12:30 / 14:00 – 18:00",
+    "openMaps": "Open in Google Maps",
+    "note": "Available by appointment for site visits and travel."
+  }
+}

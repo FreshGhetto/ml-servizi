@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: 250 250 250; /* zinc-50 */
+  --fg: 17 24 39;
+  --muted: 107 114 128;
+  --border: 228 228 231; /* zinc-200 */
+  --accent: 37 99 235; /* blue-600 */ /* ink-600 */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--fg));
+  background: rgb(var(--bg));
+}
+
+a {
+  text-underline-offset: 4px;
+}
+
+::selection{
+  background: rgba(var(--accent) / 0.18);
+}
+
+
+/* Dark theme: modern, minimal */
+.dark body {
+  --bg: 10 12 16;       /* near-black */
+  --fg: 244 244 245;    /* zinc-100 */
+  --muted: 161 161 170; /* zinc-400 */
+  --border: 39 39 42;   /* zinc-800 */
+  --accent: 59 130 246; /* blue-500 */
+}
+
+
+/* Smooth scrolling (respects reduced motion) */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Lenis smooth-scroll integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}
+
+/* Smooth theme transitions (minimal, avoids heavy effects) */
+body {
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+/* Better anchor behavior with fixed header */
+:where(h1,h2,h3,h4,h5,h6,[id]) {
+  scroll-margin-top: 90px;
+}
+
+
+/* Small dropdown pop animation (GPU-friendly) */
+.dropdown-pop {
+  transform-origin: top;
+  animation: dropdown-pop 160ms ease-out both;
+}
+@keyframes dropdown-pop {
+  from { opacity: 0; transform: translate3d(0,-6px,0) scale(0.98); }
+  to   { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+
+
+/* Premium easing used across switches */
+:root {
+  --ease-out-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Apply transitions only where needed (avoid global overrides) */
+.ui-smooth {
+  transition-property: color, background-color, border-color, outline-color, box-shadow, transform, opacity;
+  transition-duration: 220ms;
+  transition-timing-function: var(--ease-out-premium, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.ui-smooth-fast {
+  transition-property: color, background-color, border-color, outline-color, box-shadow, transform, opacity;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-out-premium, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+/* Guaranteed smooth knob animation (even if transition is overridden elsewhere) */
+@keyframes knob-slide-right {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(42px,0,0); }
+}
+@keyframes knob-slide-left {
+  from { transform: translate3d(42px,0,0); }
+  to   { transform: translate3d(0,0,0); }
+}
+
+
+/* Underline animation used for subtle premium links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+
+/* Auto underline for links inside premium cards */
+[data-motion-card] a:not(.no-underline):not([role="button"]) {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+  transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-motion-card] a:not(.no-underline):not([role="button"]):hover,
+[data-motion-card] a:not(.no-underline):not([role="button"]):focus-visible {
+  background-size: 100% 1px;
+}
+
+
+/* Stronger underline (override): applies to links in cards + explicit .link-underline */
+[data-motion-card] a:not(.no-underline):not([role="button"]),
+a.link-underline {
+  text-decoration: none !important;
+  display: inline-block;
+  background-image: linear-gradient(currentColor, currentColor) !important;
+  background-position: 0 100% !important;
+  background-repeat: no-repeat !important;
+  background-size: 0% 1px !important;
+  padding-bottom: 2px;
+  transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1), color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-motion-card] a:not(.no-underline):not([role="button"]):hover,
+[data-motion-card] a:not(.no-underline):not([role="button"]):focus-visible,
+a.link-underline:hover,
+a.link-underline:focus-visible {
+  background-size: 100% 1px !important;
+}
+
+
+/* Navbar: only show the blue active indicator. Prevent underline animation here. */
+header nav a.no-underline {
+  background-image: none !important;
+  background-size: 0% 1px !important;
+  padding-bottom: 0 !important;
+}

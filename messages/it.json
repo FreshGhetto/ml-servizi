@@ -1,0 +1,125 @@
+{
+  "Nav": {
+    "services": "Servizi",
+    "portfolio": "Lavori",
+    "insights": "Approfondimenti",
+    "about": "Chi sono",
+    "contact": "Contatti",
+    "cta": "Richiedi consulenza"
+  },
+  "Home": {
+    "heroTitle": "Servizi tecnici per rilievi, contabilità lavori e modellazione 3D",
+    "heroSubtitle": "Operativo in Veneto. Disponibile per collaborazioni e trasferte anche fuori Italia (CH inclusa).",
+    "primaryCta": "Vedi servizi",
+    "secondaryCta": "Contattami",
+    "pillarsTitle": "Cosa faccio",
+    "pillars": {
+      "survey": {
+        "title": "Rilievi & Geomatica",
+        "desc": "Fotogrammetria, drone, restituzioni CAD, nuvole di punti e documentazione tecnica."
+      },
+      "accounting": {
+        "title": "Contabilità lavori",
+        "desc": "Computi, SAL, analisi prezzi, controllo costi e supporto alla direzione lavori."
+      },
+      "modeling": {
+        "title": "3D & Archicad",
+        "desc": "Modelli 3D e render tecnici chiari, utili per decisioni e comunicazione di progetto."
+      }
+    },
+    "servicesTitle": "Servizi principali",
+    "servicesDesc": "Una selezione dei servizi più richiesti, con deliverable e casi d'uso.",
+    "insightsTitle": "Approfondimenti tecnici",
+    "insightsDesc": "Spiegazioni semplici per capire fotogrammetria, termografia e metodi di rilievo.",
+    "readInsight": "Leggi",
+    "workTitle": "Lavori selezionati",
+    "workDesc": "Esempi e casi studio (pubblica solo ciò che puoi condividere).",
+    "seeWork": "Vedi",
+    "allWork": "Tutti i lavori",
+    "hoursLabel": "Orari",
+    "hoursValue": "Lunedì – Venerdì • 08:30 – 12:30 / 14:00 – 18:00",
+    "openInMaps": "Apri su Google Maps"
+  },
+  "Common": {
+    "learnMore": "Approfondisci",
+    "requestQuote": "Richiedi preventivo",
+    "backTo": "Torna a",
+    "contactTitle": "Parliamone",
+    "contactDesc": "Scrivimi due righe: ti rispondo con domande mirate e una proposta chiara.",
+    "email": "Email",
+    "phone": "Telefono",
+    "location": "Area",
+    "form": {
+      "name": "Nome",
+      "email": "Email",
+      "company": "Azienda (opzionale)",
+      "topic": "Servizio",
+      "message": "Messaggio",
+      "send": "Invia richiesta"
+    }
+  },
+  "Services": {
+    "title": "Servizi",
+    "subtitle": "Seleziona un servizio per vedere deliverable, workflow e casi d'uso.",
+    "categories": {
+      "survey": "Rilievi & Geomatica",
+      "drone": "Drone & Fotogrammetria",
+      "thermal": "Termografia",
+      "accounting": "Contabilità lavori",
+      "modeling": "3D & Archicad"
+    }
+  },
+  "Insights": {
+    "title": "Approfondimenti",
+    "subtitle": "Spiegazioni semplici (ma tecniche) per capire strumenti e metodi.",
+    "read": "Leggi"
+  },
+  "Portfolio": {
+    "title": "Lavori",
+    "subtitle": "Casi studio e attività svolte. (Aggiungi solo ciò che puoi mostrare).",
+    "viewCase": "Vedi caso studio"
+  },
+  "About": {
+    "title": "Chi sono",
+    "subtitle": "Geometra – servizi tecnici per cantieri, rilievi e modellazione.",
+    "body": "Qui inserisci una bio concreta: anni di esperienza, tipologie di lavori, metodo, strumenti, disponibilità."
+  },
+  "Footer": {
+    "about1": "Geometra – rilievi, contabilità lavori, modellazione 3D.",
+    "about2": "Operativo in Veneto · Disponibile per trasferte e collaborazioni anche fuori Italia.",
+    "menuTitle": "Menu",
+    "services": "Servizi",
+    "work": "Lavori",
+    "insights": "Approfondimenti",
+    "contact": "Contatti",
+    "contactsTitle": "Contatti",
+    "email": "Email",
+    "phone": "Telefono",
+    "vatPec": "P.IVA / PEC",
+    "privacy": "Privacy",
+    "rights": "Tutti i diritti riservati."
+  },
+  "Search": {
+    "placeholder": "Cerca servizi, lavori, guide…",
+    "tip": "Suggerimento: Ctrl + K",
+    "none": "Nessun risultato.",
+    "hintService": "Servizio",
+    "hintInsight": "Guida",
+    "hintWork": "Lavoro"
+  },
+  "Metadata": {
+    "title": "ML Servizi",
+    "description": "Servizi tecnici: rilievi, contabilità lavori, modellazione 3D."
+  },
+  "Contact": {
+    "title": "Contatti",
+    "subtitle": "Richieste, preventivi, collaborazioni.",
+    "lead": "Compila il form: si aprirà il tuo client mail con il messaggio già pronto (nessun account richiesto).",
+    "ctaEmail": "Scrivi email",
+    "ctaMaps": "Apri su Google Maps",
+    "hoursLabel": "Orari",
+    "hoursValue": "Lunedì – Venerdì • 08:30 – 12:30 / 14:00 – 18:00",
+    "openMaps": "Apri su Google Maps",
+    "note": "Disponibile su appuntamento per sopralluoghi e trasferte."
+  }
+}
