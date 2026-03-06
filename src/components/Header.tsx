@@ -25,6 +25,7 @@ const activeKey = section; // "", "services", "portfolio", "insights", "about", 
   const d = getDict(locale as any);
   const t = d.Nav;
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -38,9 +39,22 @@ const activeKey = section; // "", "services", "portfolio", "insights", "about", 
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 2);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive: true});
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      <header className="fixed top-0 z-50 w-full bg-[rgb(var(--bg))]/80 backdrop-blur shadow-sm shadow-black/10 dark:shadow-black/40">
+      <header
+        className={
+          "fixed top-0 z-50 w-full backdrop-blur " +
+          (scrolled ? "bg-[rgb(var(--bg))]/80 " : "bg-[rgb(var(--bg))] ") +
+          (scrolled ? "shadow-sm shadow-black/10 dark:shadow-black/40" : "shadow-none")
+        }
+      >
         <Container className="flex h-[72px] items-center justify-between">
           <div className="flex items-center gap-10">
             <Link href={`/${locale}`} className="flex items-center no-underline translate-y-[1px]">

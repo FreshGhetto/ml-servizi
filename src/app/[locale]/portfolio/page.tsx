@@ -6,8 +6,9 @@ import {MotionCard} from "@/components/motion/MotionCard";
 import {portfolio} from "@/content/portfolio";
 import {SafeImage} from "@/components/ui/SafeImage";
 
-export default async function PortfolioPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function PortfolioPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");
 

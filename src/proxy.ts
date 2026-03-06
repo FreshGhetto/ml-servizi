@@ -1,7 +1,8 @@
 import {NextResponse} from "next/server";
 import type {NextRequest} from "next/server";
+import {pickLocaleFromAcceptLanguage} from "@/i18n/routing";
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const {pathname} = req.nextUrl;
   const isPublicFile = /\.[^/]+$/.test(pathname);
 
@@ -16,16 +17,16 @@ export function middleware(req: NextRequest) {
 
   // Redirect root to best language
   if (pathname === "/") {
-    const al = req.headers.get("accept-language") || "";
-    const prefersIt = al.toLowerCase().startsWith("it");
+    const locale = pickLocaleFromAcceptLanguage(req.headers.get("accept-language"));
     const url = req.nextUrl.clone();
-    url.pathname = prefersIt ? "/it" : "/en";
+    url.pathname = `/${locale}`;
     return NextResponse.redirect(url);
   }
 
-  // For other routes without locale prefix, default to /it
+  // For other routes without locale prefix, use browser preferred locale
+  const locale = pickLocaleFromAcceptLanguage(req.headers.get("accept-language"));
   const url = req.nextUrl.clone();
-  url.pathname = `/it${pathname}`;
+  url.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(url);
 }
 

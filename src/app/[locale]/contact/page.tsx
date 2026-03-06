@@ -13,8 +13,9 @@ function toMailto(opts: {to: string; subject?: string; body?: string}) {
   return `mailto:${opts.to}${qs ? `?${qs}` : ""}`;
 }
 
-export default async function ContactPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function ContactPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const t = d.Contact;
 
@@ -46,7 +47,7 @@ export default async function ContactPage({params}: {params: Promise<{locale: Lo
       </header>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <MotionCard className="h-full p-0">
+        <MotionCard className="h-full">
           <div className="relative p-6 sm:p-7">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-transparent" />
             <div className="relative">
@@ -109,7 +110,7 @@ export default async function ContactPage({params}: {params: Promise<{locale: Lo
           </div>
         </MotionCard>
 
-        <MotionCard className="h-full p-0">
+        <MotionCard className="h-full">
           <div className="relative p-6 sm:p-7">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-slate-500/5 via-transparent to-transparent" />
             <div className="relative">

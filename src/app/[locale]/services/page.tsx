@@ -5,8 +5,9 @@ import {Container} from "@/components/Container";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {services} from "@/content/services";
 
-export default async function ServicesPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function ServicesPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const c = d.Common;
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");

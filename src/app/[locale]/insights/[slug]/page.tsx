@@ -4,8 +4,9 @@ import {getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {insights} from "@/content/insights";
 
-export default async function InsightDetail({params}: {params: Promise<{locale: Locale; slug: string}>}) {
-  const {locale, slug} = await params;
+export default async function InsightDetail({params}: {params: Promise<{locale: string; slug: string}>}) {
+  const {locale: localeParam, slug} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");
 

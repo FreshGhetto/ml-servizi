@@ -9,7 +9,7 @@ import type {HTMLAttributes, MouseEvent, FocusEvent} from "react";
  * - Outer lift + subtle scale
  * - Glow tracks cursor position
  * - Resets glow on mouse leave / blur / tab switch (prevents "stuck" gradient)
- * - No text blur (we avoid scaling inner content)
+ * - Keeps text crisper by avoiding forced GPU rasterization on the card container
  */
 export function MotionCard({
   className,
@@ -108,12 +108,11 @@ export function MotionCard({
       onMouseLeave={onLeave}
       onBlurCapture={onBlurCapture}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))] transform-gpu",
+        "group relative isolate overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))]",
         "motion-safe:hover:will-change-transform motion-safe:focus-within:will-change-transform",
         "motion-safe:transition-[transform,box-shadow,border-color] motion-safe:duration-180 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
         "hover:-translate-y-0.5 focus-within:-translate-y-0.5",
         "hover:shadow-[0_8px_16px_rgba(0,0,0,.16)] focus-within:shadow-[0_8px_16px_rgba(0,0,0,.16)]",
-        "motion-safe:hover:scale-[1.002] motion-safe:focus-within:scale-[1.002]",
         className
       )}
     >
@@ -133,21 +132,19 @@ export function MotionCard({
       <div
         aria-hidden="true"
         className={cn(
-          "pointer-events-none absolute -inset-x-24 -inset-y-8 hidden rotate-12 opacity-0 sm:block",
+          "pointer-events-none absolute inset-0 hidden opacity-0 sm:block",
           "transition-opacity duration-180 ease-[cubic-bezier(0.22,1,0.36,1)]",
           "group-hover:opacity-100 group-focus-within:opacity-100"
         )}
         style={{
           background:
-            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,.07) 45%, transparent 70%)"
+            "linear-gradient(112deg, transparent 26%, rgba(255,255,255,.06) 50%, transparent 74%)"
         }}
       />
 
       <div
         className={cn(
-          "relative rounded-2xl",
-          "transition-transform duration-180 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          "group-hover:translate-y-[-1px] group-focus-within:translate-y-[-1px]"
+          "relative"
         )}
       >
         {children}

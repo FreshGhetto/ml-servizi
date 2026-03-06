@@ -5,8 +5,9 @@ import {Container} from "@/components/Container";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {insights} from "@/content/insights";
 
-export default async function InsightsPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function InsightsPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");
 

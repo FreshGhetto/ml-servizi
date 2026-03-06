@@ -7,8 +7,9 @@ import {TechnicalGallery} from "@/components/portfolio/TechnicalGallery";
 import {portfolio} from "@/content/portfolio";
 import {SafeImage} from "@/components/ui/SafeImage";
 
-export default async function PortfolioDetail({params}: {params: Promise<{locale: Locale; slug: string}>}) {
-  const {locale, slug} = await params;
+export default async function PortfolioDetail({params}: {params: Promise<{locale: string; slug: string}>}) {
+  const {locale: localeParam, slug} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");
 

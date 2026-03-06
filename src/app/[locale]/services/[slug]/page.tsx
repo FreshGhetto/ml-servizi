@@ -7,9 +7,10 @@ import {services} from "@/content/services";
 export default async function ServiceDetailPage({
   params
 }: {
-  params: Promise<{locale: Locale; slug: string}>;
+  params: Promise<{locale: string; slug: string}>;
 }) {
-  const {locale, slug} = await params;
+  const {locale: localeParam, slug} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const c = d.Common;
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");

@@ -2,8 +2,9 @@ import type {Locale} from "@/i18n/routing";
 import {Container} from "@/components/Container";
 import {getDict} from "@/i18n/dict";
 
-export default async function AboutPage({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function AboutPage({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
 
   return (

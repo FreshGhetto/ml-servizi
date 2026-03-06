@@ -59,7 +59,8 @@ export function LanguageSwitchPill({currentLocale}:{currentLocale: Locale}) {
         aria-hidden="true"
         className={cn(
           "absolute top-1 bottom-1 w-[34px] rounded-full bg-blue-600 shadow-md",
-          "ui-smooth will-change-[left]"
+          "will-change-[left]",
+          "transition-[left] duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
         )}
         style={{left: isIt ? "4px" : "calc(100% - 34px - 4px)"}}
       />
@@ -69,8 +70,10 @@ export function LanguageSwitchPill({currentLocale}:{currentLocale: Locale}) {
           type="button"
           onClick={() => go("it", hrefIt)}
           className={cn(
-            "flex items-center justify-center rounded-full transition-colors duration-200",
-            isIt ? "text-white" : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+            "flex items-center justify-center rounded-full transition-[color,transform,opacity] duration-300",
+            isIt
+              ? "text-white scale-100 opacity-100"
+              : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))] scale-[0.98] opacity-95"
           )}
           aria-pressed={isIt}
           aria-label="Italiano"
@@ -82,8 +85,10 @@ export function LanguageSwitchPill({currentLocale}:{currentLocale: Locale}) {
           type="button"
           onClick={() => go("en", hrefEn)}
           className={cn(
-            "flex items-center justify-center rounded-full transition-colors duration-200",
-            !isIt ? "text-white" : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+            "flex items-center justify-center rounded-full transition-[color,transform,opacity] duration-300",
+            !isIt
+              ? "text-white scale-100 opacity-100"
+              : "text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))] scale-[0.98] opacity-95"
           )}
           aria-pressed={!isIt}
           aria-label="English"

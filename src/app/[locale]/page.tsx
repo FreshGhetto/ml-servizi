@@ -10,8 +10,9 @@ import {portfolio} from "@/content/portfolio";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {SafeImage} from "@/components/ui/SafeImage";
 
-export default async function Home({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
+export default async function Home({params}: {params: Promise<{locale: string}>}) {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const t = d.Home;
   const c = d.Common;
@@ -76,7 +77,7 @@ export default async function Home({params}: {params: Promise<{locale: Locale}>}
           <SectionTitle title={t.workTitle} subtitle={t.workDesc} />
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {portfolio.slice(0, 2).map((p) => (
-              <MotionCard key={p.slug} className="h-full overflow-hidden">
+              <MotionCard key={p.slug} className="h-full">
                 <div className="relative aspect-[4/3] sm:aspect-[16/10]">
                   <SafeImage
                     src={p.cardImage ?? p.coverImage}
