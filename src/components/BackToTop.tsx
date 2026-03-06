@@ -38,8 +38,9 @@ export function BackToTop({label}: {label: string}) {
       title={label}
       className={cn(
         "group fixed bottom-6 right-4 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full",
-        "border border-[rgb(var(--border))] bg-[rgb(var(--bg)/0.9)] text-[rgb(var(--fg))]",
-        "shadow-[0_10px_30px_rgba(2,6,23,0.18)]",
+        "border border-[rgb(var(--border)/0.72)] bg-[rgb(var(--bg)/0.9)] text-[rgb(var(--fg))]",
+        "dark:border-white/10 dark:bg-[rgb(var(--bg)/0.82)]",
+        "shadow-[0_10px_30px_rgba(2,6,23,0.18)] dark:shadow-[0_10px_26px_rgba(0,0,0,0.55)]",
         "motion-safe:transition-all motion-safe:duration-220 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)]",
         "hover:border-blue-400 hover:text-blue-700 motion-safe:hover:-translate-y-1 dark:hover:text-blue-300",
         isVisible
