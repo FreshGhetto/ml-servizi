@@ -70,6 +70,7 @@ export const dict: Record<Lang, any> = {
       phone: "Telefono",
       vatPec: "P.IVA / PEC",
       privacy: "Privacy",
+      cookies: "Cookie",
       rights: "Tutti i diritti riservati."
     },
     Search: {
@@ -144,6 +145,7 @@ export const dict: Record<Lang, any> = {
       phone: "Phone",
       vatPec: "VAT / PEC",
       privacy: "Privacy",
+      cookies: "Cookies",
       rights: "All rights reserved."
     },
     Search: {

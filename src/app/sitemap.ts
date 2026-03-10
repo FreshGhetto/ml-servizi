@@ -17,7 +17,9 @@ const STATIC_ROUTES: RouteConfig[] = [
   {pathname: "/portfolio", priority: 0.9, changeFrequency: "weekly"},
   {pathname: "/insights", priority: 0.8, changeFrequency: "weekly"},
   {pathname: "/about", priority: 0.7, changeFrequency: "monthly"},
-  {pathname: "/contact", priority: 0.8, changeFrequency: "monthly"}
+  {pathname: "/contact", priority: 0.8, changeFrequency: "monthly"},
+  {pathname: "/privacy-policy", priority: 0.3, changeFrequency: "monthly"},
+  {pathname: "/cookie-policy", priority: 0.3, changeFrequency: "monthly"}
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

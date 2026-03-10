@@ -40,12 +40,18 @@ export async function Footer({locale}: {locale: Locale}) {
               <li>{f.vatPec}: <span className="text-[rgb(var(--fg))]">...</span></li>
             </ul>
             <div className="mt-4 flex gap-4">
-              <a className="ui-smooth link-underline inline-flex link- text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="#" aria-label="LinkedIn">
-                LinkedIn
-              </a>
-              <a className="ui-smooth link-underline inline-flex link- text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="#" aria-label="Privacy">
+              <Link
+                className="ui-smooth link-underline inline-flex link- text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+                href={`/${locale}/privacy-policy`}
+              >
                 {f.privacy}
-              </a>
+              </Link>
+              <Link
+                className="ui-smooth link-underline inline-flex link- text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+                href={`/${locale}/cookie-policy`}
+              >
+                {f.cookies}
+              </Link>
             </div>
           </div>
         </div>
