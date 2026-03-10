@@ -25,7 +25,10 @@ export async function generateMetadata({
   return buildLocalizedMetadata({
     locale,
     pathname: "/",
-    title: d.Home.heroTitle,
+    title:
+      locale === "it"
+        ? "ML Servizi - Rilievi, Contabilita Lavori e Modellazione 3D"
+        : "ML Servizi - Surveying, Construction Accounting and 3D Modelling",
     description: d.Home.heroSubtitle,
     keywords:
       locale === "it"

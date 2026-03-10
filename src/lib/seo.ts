@@ -64,7 +64,7 @@ function normalizePath(pathname: string): string {
 }
 
 function withSiteName(title: string): string {
-  if (title === SITE_NAME) return title;
+  if (title.toLowerCase().includes(SITE_NAME.toLowerCase())) return title;
   return `${title} | ${SITE_NAME}`;
 }
 
