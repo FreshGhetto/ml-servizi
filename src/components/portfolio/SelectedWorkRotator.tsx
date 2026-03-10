@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import {useEffect, useMemo, useState} from "react";
-import type {FocusEvent} from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import {useMemo} from "react";
 import type {Locale} from "@/i18n/routing";
 import type {CaseStudy} from "@/content/portfolio";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {SafeImage} from "@/components/ui/SafeImage";
-
-const ROTATION_MS = 5200;
-const TRANSITION_MS = 760;
 
 type SelectedWorkRotatorProps = {
   locale: Locale;
@@ -25,15 +23,9 @@ function Chevron({dir}: {dir: "left" | "right"}) {
   );
 }
 
-function getPair(items: CaseStudy[], start: number) {
-  if (items.length === 0) return [];
-  if (items.length === 1) return [items[0]];
-  return [items[start], items[(start + 1) % items.length]];
-}
-
 function WorkCard({item, locale, seeWorkLabel}: {item: CaseStudy; locale: Locale; seeWorkLabel: string}) {
   return (
-    <MotionCard key={item.slug} className="h-full">
+    <MotionCard className="h-full">
       <Link
         href={`/${locale}/portfolio/${item.slug}`}
         className="relative block aspect-[4/3] overflow-hidden no-underline sm:aspect-[16/10]"
@@ -67,128 +59,71 @@ function WorkCard({item, locale, seeWorkLabel}: {item: CaseStudy; locale: Locale
 }
 
 export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkRotatorProps) {
-  const [activeStart, setActiveStart] = useState(0);
-  const [nextStart, setNextStart] = useState<number | null>(null);
-  const [nextVisible, setNextVisible] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const [transitionDirection, setTransitionDirection] = useState<1 | -1>(1);
+  const autoplay = useMemo(
+    () =>
+      Autoplay({
+        delay: 5200,
+        stopOnMouseEnter: true,
+        stopOnInteraction: false
+      }),
+    []
+  );
 
-  const currentPair = useMemo(() => getPair(items, activeStart), [items, activeStart]);
-  const incomingPair = useMemo(() => {
-    if (nextStart === null) return [];
-    return getPair(items, nextStart);
-  }, [items, nextStart]);
-
-  const beginTransition = (direction: 1 | -1) => {
-    if (items.length <= 1 || nextStart !== null) return;
-    setTransitionDirection(direction);
-    setNextStart((value) => {
-      if (value !== null) return value;
-      return (activeStart + direction + items.length) % items.length;
-    });
-  };
-
-  useEffect(() => {
-    if (items.length <= 2 || isPaused || nextStart !== null) return;
-
-    const intervalId = window.setInterval(() => {
-      setTransitionDirection(1);
-      setNextStart((value) => {
-        if (value !== null) return value;
-        return (activeStart + 1) % items.length;
-      });
-    }, ROTATION_MS);
-
-    return () => window.clearInterval(intervalId);
-  }, [activeStart, isPaused, items.length, nextStart]);
-
-  useEffect(() => {
-    if (nextStart === null) return;
-
-    const rafId = window.requestAnimationFrame(() => setNextVisible(true));
-    const timeoutId = window.setTimeout(() => {
-      setActiveStart(nextStart);
-      setNextStart(null);
-      setNextVisible(false);
-    }, TRANSITION_MS);
-
-    return () => {
-      window.cancelAnimationFrame(rafId);
-      window.clearTimeout(timeoutId);
-    };
-  }, [nextStart]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: items.length > 1,
+      align: "start",
+      duration: 28
+    },
+    [autoplay]
+  );
 
   if (items.length === 0) return null;
 
-  const onBlurCapture = (event: FocusEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-      setIsPaused(false);
-    }
+  const canSlide = items.length > 1;
+  const onPrev = () => {
+    if (!emblaApi || !canSlide) return;
+    emblaApi.scrollPrev();
+    autoplay.reset();
+  };
+  const onNext = () => {
+    if (!emblaApi || !canSlide) return;
+    emblaApi.scrollNext();
+    autoplay.reset();
   };
 
   return (
-    <div
-      className="relative mt-8"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocusCapture={() => setIsPaused(true)}
-      onBlurCapture={onBlurCapture}
-    >
-      <div className="mb-4 flex items-center justify-end gap-2">
-        <button
-          type="button"
-          aria-label={locale === "it" ? "Lavoro precedente" : "Previous work"}
-          onClick={() => beginTransition(-1)}
-          disabled={items.length <= 1 || nextStart !== null}
-          className="ui-smooth inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--bg))]/95 text-[rgb(var(--muted))] shadow-sm transition-[transform,box-shadow,border-color,color] duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-blue-300/70 hover:text-blue-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 dark:hover:border-blue-500/60 dark:hover:text-blue-300"
-        >
-          <Chevron dir="left" />
-        </button>
-        <button
-          type="button"
-          aria-label={locale === "it" ? "Lavoro successivo" : "Next work"}
-          onClick={() => beginTransition(1)}
-          disabled={items.length <= 1 || nextStart !== null}
-          className="ui-smooth inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--bg))]/95 text-[rgb(var(--muted))] shadow-sm transition-[transform,box-shadow,border-color,color] duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-blue-300/70 hover:text-blue-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 dark:hover:border-blue-500/60 dark:hover:text-blue-300"
-        >
-          <Chevron dir="right" />
-        </button>
-      </div>
-
-      <div
-        className={`grid gap-6 md:grid-cols-2 transition-all duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          nextStart === null
-            ? "translate-x-0 opacity-100"
-            : transitionDirection === 1
-              ? "-translate-x-6 opacity-0 pointer-events-none"
-              : "translate-x-6 opacity-0 pointer-events-none"
-        }`}
+    <div className="relative mt-8">
+      <button
+        type="button"
+        aria-label={locale === "it" ? "Lavoro precedente" : "Previous work"}
+        onClick={onPrev}
+        disabled={!canSlide}
+        className="ui-smooth absolute left-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--bg))]/88 text-[rgb(var(--muted))] shadow-[0_8px_22px_rgba(2,6,23,0.12)] backdrop-blur-sm transition-[transform,box-shadow,border-color,color,background-color] duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[52%] hover:border-blue-300/70 hover:bg-[rgb(var(--bg))] hover:text-blue-700 hover:shadow-[0_12px_24px_rgba(2,6,23,0.16)] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-[-50%] md:-left-5 dark:hover:border-blue-500/60 dark:hover:text-blue-300"
       >
-        {currentPair.map((item, index) => (
-          <div key={item.slug} className={index === 1 ? "hidden md:block" : undefined}>
-            <WorkCard item={item} locale={locale} seeWorkLabel={seeWorkLabel} />
-          </div>
-        ))}
-      </div>
+        <Chevron dir="left" />
+      </button>
 
-      {nextStart !== null && (
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute inset-0 grid gap-6 md:grid-cols-2 transition-all duration-[760ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            nextVisible
-              ? "translate-x-0 opacity-100"
-              : transitionDirection === 1
-                ? "translate-x-6 opacity-0"
-                : "-translate-x-6 opacity-0"
-          }`}
-        >
-          {incomingPair.map((item, index) => (
-            <div key={item.slug} className={index === 1 ? "hidden md:block" : undefined}>
+      <button
+        type="button"
+        aria-label={locale === "it" ? "Lavoro successivo" : "Next work"}
+        onClick={onNext}
+        disabled={!canSlide}
+        className="ui-smooth absolute right-2 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--bg))]/88 text-[rgb(var(--muted))] shadow-[0_8px_22px_rgba(2,6,23,0.12)] backdrop-blur-sm transition-[transform,box-shadow,border-color,color,background-color] duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[52%] hover:border-blue-300/70 hover:bg-[rgb(var(--bg))] hover:text-blue-700 hover:shadow-[0_12px_24px_rgba(2,6,23,0.16)] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-[-50%] md:-right-5 dark:hover:border-blue-500/60 dark:hover:text-blue-300"
+      >
+        <Chevron dir="right" />
+      </button>
+
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="-ml-6 flex touch-pan-y">
+          {items.map((item) => (
+            <div key={item.slug} className="min-w-0 flex-[0_0_100%] pl-6 md:flex-[0_0_50%]">
               <WorkCard item={item} locale={locale} seeWorkLabel={seeWorkLabel} />
             </div>
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
+
