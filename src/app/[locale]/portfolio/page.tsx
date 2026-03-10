@@ -1,19 +1,59 @@
 import Link from "next/link";
+import type {Metadata} from "next";
 import type {Locale} from "@/i18n/routing";
+import {StructuredData} from "@/components/StructuredData";
 import {getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {portfolio} from "@/content/portfolio";
 import {SafeImage} from "@/components/ui/SafeImage";
+import {buildBreadcrumbJsonLd, buildItemListJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/portfolio",
+    title: locale === "it" ? "Portfolio lavori tecnici" : "Technical Project Portfolio",
+    description:
+      locale === "it"
+        ? "Casi studio su rilievi, documentazione tecnica, supporto cantiere e modellazione."
+        : "Case studies on surveying, technical documentation, site support and modelling.",
+    keywords:
+      locale === "it"
+        ? ["portfolio rilievi", "casi studio edilizia", "documentazione tecnica"]
+        : ["surveying portfolio", "construction case studies", "technical documentation projects"]
+  });
+}
 
 export default async function PortfolioPage({params}: {params: Promise<{locale: string}>}) {
   const {locale: localeParam} = await params;
   const locale = localeParam as Locale;
   const d = getDict(locale as any);
   const L = (obj: any) => (obj?.[locale] ?? obj?.it ?? obj?.en ?? "");
+  const structuredData = [
+    buildBreadcrumbJsonLd([
+      {name: "Home", url: localizedUrl(locale, "/")},
+      {name: locale === "it" ? "Lavori" : "Work", url: localizedUrl(locale, "/portfolio")}
+    ]),
+    buildItemListJsonLd(
+      locale === "it" ? "Portfolio tecnico" : "Technical portfolio",
+      portfolio.map((item) => ({
+        name: L(item.title),
+        url: localizedUrl(locale, `/portfolio/${item.slug}`)
+      }))
+    )
+  ];
 
   return (
     <Container className="py-14 sm:py-16">
+      <StructuredData data={structuredData} />
       <header className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
           {locale === "it" ? "Portfolio tecnico" : "Technical portfolio"}

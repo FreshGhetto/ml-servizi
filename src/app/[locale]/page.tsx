@@ -1,5 +1,7 @@
+import type {Metadata} from "next";
 import type {Locale} from "@/i18n/routing";
 import Link from "next/link";
+import {StructuredData} from "@/components/StructuredData";
 import {getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {MapEmbed, MAPS_PLACE_URL} from "@/components/MapEmbed";
@@ -9,6 +11,41 @@ import {services} from "@/content/services";
 import {portfolio} from "@/content/portfolio";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {SafeImage} from "@/components/ui/SafeImage";
+import {buildBreadcrumbJsonLd, buildItemListJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
+  const d = getDict(locale as any);
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/",
+    title: d.Home.heroTitle,
+    description: d.Home.heroSubtitle,
+    keywords:
+      locale === "it"
+        ? [
+            "rilievi topografici veneto",
+            "fotogrammetria drone",
+            "contabilita lavori sal",
+            "modellazione 3d archicad",
+            "termografia drone"
+          ]
+        : [
+            "surveying services italy",
+            "drone photogrammetry",
+            "construction accounting",
+            "3d modelling archicad",
+            "drone thermal inspections"
+          ],
+    imagePaths: ["/hero/hero-photogrammetry-church-complex.png"]
+  });
+}
 
 export default async function Home({params}: {params: Promise<{locale: string}>}) {
   const {locale: localeParam} = await params;
@@ -16,6 +53,24 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
   const d = getDict(locale as any);
   const t = d.Home;
   const c = d.Common;
+  const homeUrl = localizedUrl(locale, "/");
+  const structuredData = [
+    buildBreadcrumbJsonLd([{name: locale === "it" ? "Home" : "Home", url: homeUrl}]),
+    buildItemListJsonLd(
+      locale === "it" ? "Servizi principali" : "Key services",
+      services.slice(0, 4).map((service) => ({
+        name: service.title[locale],
+        url: localizedUrl(locale, `/services/${service.slug}`)
+      }))
+    ),
+    buildItemListJsonLd(
+      locale === "it" ? "Lavori selezionati" : "Selected work",
+      portfolio.slice(0, 4).map((item) => ({
+        name: item.title[locale],
+        url: localizedUrl(locale, `/portfolio/${item.slug}`)
+      }))
+    )
+  ];
 
   const slides = [
     {src: "/hero/hero-photogrammetry-church-complex.webp", alt: "Fotogrammetria 3D complesso storico", textTone: "light" as const},
@@ -28,6 +83,8 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
 
   return (
     <>
+      <StructuredData data={structuredData} />
+
       {/* Hero */}
       <HeroSection
         locale={locale}

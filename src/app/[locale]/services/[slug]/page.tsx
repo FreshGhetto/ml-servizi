@@ -1,8 +1,47 @@
 import Link from "next/link";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
 import type {Locale} from "@/i18n/routing";
+import {locales} from "@/i18n/routing";
+import {StructuredData} from "@/components/StructuredData";
 import {getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {services} from "@/content/services";
+import {buildBreadcrumbJsonLd, buildLocalizedMetadata, buildServiceJsonLd, localizedUrl} from "@/lib/seo";
+
+export function generateStaticParams() {
+  return locales.flatMap((locale) => services.map((service) => ({locale, slug: service.slug})));
+}
+
+export const dynamicParams = false;
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string; slug: string}>;
+}): Promise<Metadata> {
+  const {locale: localeParam, slug} = await params;
+  const locale = localeParam as Locale;
+  const service = services.find((entry) => entry.slug === slug);
+
+  if (!service) {
+    return buildLocalizedMetadata({
+      locale,
+      pathname: `/services/${slug}`,
+      title: locale === "it" ? "Servizio non trovato" : "Service not found",
+      description: locale === "it" ? "Il servizio richiesto non e disponibile." : "The requested service is unavailable.",
+      noIndex: true
+    });
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: `/services/${slug}`,
+    title: service.title[locale],
+    description: service.short[locale],
+    keywords: service.category ? [service.category, service.title[locale]] : [service.title[locale]]
+  });
+}
 
 export default async function ServiceDetailPage({
   params
@@ -17,18 +56,20 @@ export default async function ServiceDetailPage({
 
   const s = services.find((x) => x.slug === slug);
   if (!s) {
-    return (
-      <Container className="py-14">
-        <p className="link-underline text-[rgb(var(--muted))]">{locale === "it" ? "Servizio non trovato." : "Service not found."}</p>
-        <Link className="mt-4 inline-block link-underline text-blue-700 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200" href={`/${locale}/services`}>
-          ← {d.Nav.services}
-        </Link>
-      </Container>
-    );
+    notFound();
   }
+  const structuredData = [
+    buildBreadcrumbJsonLd([
+      {name: "Home", url: localizedUrl(locale, "/")},
+      {name: locale === "it" ? "Servizi" : "Services", url: localizedUrl(locale, "/services")},
+      {name: L(s.title), url: localizedUrl(locale, `/services/${s.slug}`)}
+    ]),
+    buildServiceJsonLd(locale, s)
+  ];
 
   return (
     <Container className="py-14">
+      <StructuredData data={structuredData} />
       <Link className="link-underline text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href={`/${locale}/services`}>
         ← {d.Nav.services}
       </Link>

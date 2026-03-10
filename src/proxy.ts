@@ -11,7 +11,11 @@ export function proxy(req: NextRequest) {
   }
 
   // If already on /it or /en, continue
-  if (pathname.startsWith("/it") || pathname.startsWith("/en") || pathname.startsWith("/_next") || pathname.startsWith("/favicon")) {
+  if (pathname.startsWith("/it") || pathname.startsWith("/en")) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith("/_next") || pathname.startsWith("/favicon")) {
     return NextResponse.next();
   }
 

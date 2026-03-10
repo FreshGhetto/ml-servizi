@@ -1,9 +1,33 @@
 import Link from "next/link";
+import type {Metadata} from "next";
 import type {Locale} from "@/i18n/routing";
+import {StructuredData} from "@/components/StructuredData";
 import {getAddress, getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {MapEmbed, MAPS_PLACE_URL} from "@/components/MapEmbed";
 import {MotionCard} from "@/components/motion/MotionCard";
+import {CONTACT_EMAIL, CONTACT_PHONE, buildBreadcrumbJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string}>;
+}): Promise<Metadata> {
+  const {locale: localeParam} = await params;
+  const locale = localeParam as Locale;
+  const d = getDict(locale as any);
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: "/contact",
+    title: d.Contact.title,
+    description: d.Contact.subtitle,
+    keywords:
+      locale === "it"
+        ? ["contatti geometra venezia", "preventivo rilievi", "consulenza tecnica edilizia"]
+        : ["contact surveyor italy", "request quote surveying", "technical consulting contact"]
+  });
+}
 
 function toMailto(opts: {to: string; subject?: string; body?: string}) {
   const p = new URLSearchParams();
@@ -24,6 +48,25 @@ export default async function ContactPage({params}: {params: Promise<{locale: st
   const PHONE_DISPLAY = "+39 351 544 7413";
   const PHONE_TEL = "+393515447413";
   const ADDRESS = getAddress(locale as any);
+  const structuredData = [
+    buildBreadcrumbJsonLd([
+      {name: "Home", url: localizedUrl(locale, "/")},
+      {name: locale === "it" ? "Contatti" : "Contact", url: localizedUrl(locale, "/contact")}
+    ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      name: locale === "it" ? "Contatti ML Servizi" : "ML Servizi Contact",
+      url: localizedUrl(locale, "/contact"),
+      inLanguage: locale === "it" ? "it-IT" : "en-US",
+      mainEntity: {
+        "@type": "Organization",
+        name: "ML Servizi",
+        email: CONTACT_EMAIL,
+        telephone: CONTACT_PHONE
+      }
+    }
+  ];
 
   const mailto = toMailto({
     to: EMAIL,
@@ -36,6 +79,7 @@ export default async function ContactPage({params}: {params: Promise<{locale: st
 
   return (
     <Container className="py-14 sm:py-16">
+      <StructuredData data={structuredData} />
       <header className="max-w-3xl">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
           {locale === "it" ? "Contatto diretto" : "Direct contact"}

@@ -1,11 +1,50 @@
 import Link from "next/link";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
 import type {Locale} from "@/i18n/routing";
+import {locales} from "@/i18n/routing";
+import {StructuredData} from "@/components/StructuredData";
 import {getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {MotionCard} from "@/components/motion/MotionCard";
 import {TechnicalGallery} from "@/components/portfolio/TechnicalGallery";
 import {portfolio} from "@/content/portfolio";
 import {SafeImage} from "@/components/ui/SafeImage";
+import {buildBreadcrumbJsonLd, buildCaseStudyJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
+
+export function generateStaticParams() {
+  return locales.flatMap((locale) => portfolio.map((item) => ({locale, slug: item.slug})));
+}
+
+export const dynamicParams = false;
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string; slug: string}>;
+}): Promise<Metadata> {
+  const {locale: localeParam, slug} = await params;
+  const locale = localeParam as Locale;
+  const item = portfolio.find((entry) => entry.slug === slug);
+
+  if (!item) {
+    return buildLocalizedMetadata({
+      locale,
+      pathname: `/portfolio/${slug}`,
+      title: locale === "it" ? "Caso studio non trovato" : "Case study not found",
+      description: locale === "it" ? "Il caso studio richiesto non e disponibile." : "The requested case study is unavailable.",
+      noIndex: true
+    });
+  }
+
+  return buildLocalizedMetadata({
+    locale,
+    pathname: `/portfolio/${slug}`,
+    title: item.title[locale],
+    description: item.summary[locale],
+    imagePaths: ["/hero/hero-photogrammetry-church-complex.png", item.coverImage]
+  });
+}
 
 export default async function PortfolioDetail({params}: {params: Promise<{locale: string; slug: string}>}) {
   const {locale: localeParam, slug} = await params;
@@ -15,19 +54,7 @@ export default async function PortfolioDetail({params}: {params: Promise<{locale
 
   const item = portfolio.find((x) => x.slug === slug);
   if (!item) {
-    return (
-      <Container className="py-14">
-        <p className="link-underline text-[rgb(var(--muted))]">
-          {locale === "it" ? "Caso studio non trovato." : "Case study not found."}
-        </p>
-        <Link
-          className="mt-4 inline-block link-underline text-blue-700 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200"
-          href={`/${locale}/portfolio`}
-        >
-          ← {d.Nav.portfolio}
-        </Link>
-      </Container>
-    );
+    notFound();
   }
 
   const technicalGallery = [
@@ -40,9 +67,18 @@ export default async function PortfolioDetail({params}: {params: Promise<{locale
       alt: `${L(item.title)} - ${locale === "it" ? "galleria" : "gallery"} ${index + 1}`
     }))
   ];
+  const structuredData = [
+    buildBreadcrumbJsonLd([
+      {name: "Home", url: localizedUrl(locale, "/")},
+      {name: locale === "it" ? "Lavori" : "Work", url: localizedUrl(locale, "/portfolio")},
+      {name: L(item.title), url: localizedUrl(locale, `/portfolio/${item.slug}`)}
+    ]),
+    buildCaseStudyJsonLd(locale, item)
+  ];
 
   return (
     <Container className="py-14">
+      <StructuredData data={structuredData} />
       <Link className="link-underline text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href={`/${locale}/portfolio`}>
         ← {d.Nav.portfolio}
       </Link>
