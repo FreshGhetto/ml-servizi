@@ -21,7 +21,10 @@ export async function generateMetadata({
     locale,
     pathname: "/contact",
     title: d.Contact.title,
-    description: d.Contact.subtitle,
+    description:
+      locale === "it"
+        ? "Contatti ML Servizi a Marghera (Venezia), operativo in Veneto per rilievi, contabilita lavori e modellazione 3D."
+        : "Contact ML Servizi in Marghera (Venice), operating across Veneto for surveying, construction accounting and 3D modelling.",
     keywords:
       locale === "it"
         ? ["contatti geometra venezia", "preventivo rilievi", "consulenza tecnica edilizia"]
@@ -43,8 +46,8 @@ export default async function ContactPage({params}: {params: Promise<{locale: st
   const d = getDict(locale as any);
   const t = d.Contact;
 
-  const EMAIL = "mlservizi13@gmail.com";
-  const PEC = "pec@mlservizi.it";
+  const EMAIL = CONTACT_EMAIL;
+  const PEC = "mlservizi13@pec.it";
   const PHONE_DISPLAY = "+39 351 544 7413";
   const PHONE_TEL = "+393515447413";
   const ADDRESS = getAddress(locale as any);

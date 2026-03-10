@@ -2,8 +2,8 @@ export type Lang = "it" | "en";
 
 // TODO: Replace with the exact address shown on Google Business / Google Maps.
 const ADDRESS: Record<Lang, string> = {
-  it: "Via Banchina dell' Azoto, 15, 30175 Venezia VE",
-  en: "Via Banchina dell' Azoto, 15, 30175 Venice, Italy"
+  it: "Marghera, Venezia (VE), Italia",
+  en: "Marghera, Venice, Italy"
 };
 
 export const dict: Record<Lang, any> = {

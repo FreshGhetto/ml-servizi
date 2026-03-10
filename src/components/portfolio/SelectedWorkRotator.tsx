@@ -63,6 +63,7 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
     () =>
       Autoplay({
         delay: 5000,
+        jump: false,
         stopOnMouseEnter: true,
         stopOnInteraction: false
       }),
@@ -73,7 +74,7 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
     {
       loop: items.length > 1,
       align: "start",
-      duration: 28
+      duration: 36
     },
     [autoplay]
   );
@@ -114,8 +115,8 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
         <Chevron dir="right" />
       </button>
 
-      <div ref={emblaRef} className="overflow-hidden px-2 py-3 md:px-3">
-        <div className="-ml-6 flex touch-pan-y">
+      <div ref={emblaRef} className="overflow-hidden -mx-4 px-4 py-5 md:-mx-6 md:px-6">
+        <div className="-ml-6 flex touch-pan-y transform-gpu will-change-transform">
           {items.map((item) => (
             <div key={item.slug} className="min-w-0 flex-[0_0_100%] pl-6 md:flex-[0_0_50%]">
               <WorkCard item={item} locale={locale} seeWorkLabel={seeWorkLabel} />

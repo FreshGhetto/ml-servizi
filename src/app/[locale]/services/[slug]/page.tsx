@@ -58,6 +58,10 @@ export default async function ServiceDetailPage({
   if (!s) {
     notFound();
   }
+  const deliverables = s.deliverables[locale] ?? s.deliverables.it ?? s.deliverables.en;
+  const useCases = s.useCases[locale] ?? s.useCases.it ?? s.useCases.en;
+  const deepDive = s.deepDive?.[locale] ?? s.deepDive?.it ?? s.deepDive?.en ?? [];
+  const advantages = s.advantages?.[locale] ?? s.advantages?.it ?? s.advantages?.en ?? [];
   const structuredData = [
     buildBreadcrumbJsonLd([
       {name: "Home", url: localizedUrl(locale, "/")},
@@ -75,6 +79,18 @@ export default async function ServiceDetailPage({
       </Link>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[rgb(var(--fg))]">{L(s.title)}</h1>
       <p className="link-underline mt-3 text-[rgb(var(--muted))]">{L(s.short)}</p>
+      {deepDive.length > 0 && (
+        <div className="mt-8 space-y-4">
+          <h2 className="text-lg font-semibold text-[rgb(var(--fg))]">
+            {locale === "it" ? "Approccio tecnico" : "Technical approach"}
+          </h2>
+          {deepDive.map((paragraph, index) => (
+            <p key={index} className="text-sm leading-relaxed text-[rgb(var(--muted))]">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      )}
 
       <div className="mt-10 grid gap-10 md:grid-cols-2">
         <div>
@@ -82,7 +98,7 @@ export default async function ServiceDetailPage({
             {locale === "it" ? "Deliverable" : "Deliverables"}
           </h2>
           <ul className="link-underline mt-3 list-disc space-y-2 pl-5 text-sm text-[rgb(var(--muted))]">
-            {L(s.deliverables).map((x: string, i: number) => (
+            {deliverables.map((x: string, i: number) => (
               <li key={i}>{x}</li>
             ))}
           </ul>
@@ -92,12 +108,24 @@ export default async function ServiceDetailPage({
             {locale === "it" ? "Casi d'uso" : "Use cases"}
           </h2>
           <ul className="link-underline mt-3 list-disc space-y-2 pl-5 text-sm text-[rgb(var(--muted))]">
-            {L(s.useCases).map((x: string, i: number) => (
+            {useCases.map((x: string, i: number) => (
               <li key={i}>{x}</li>
             ))}
           </ul>
         </div>
       </div>
+      {advantages.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-lg font-semibold text-[rgb(var(--fg))]">
+            {locale === "it" ? "Vantaggi operativi" : "Operational benefits"}
+          </h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[rgb(var(--muted))]">
+            {advantages.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="mt-12 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))] p-6">
         <div className="text-base font-semibold text-[rgb(var(--fg))]">{d.Home.talkTitle}</div>

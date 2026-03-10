@@ -5,7 +5,7 @@ export const MAPS_PLACE_URL =
 
 // Use a dedicated embed endpoint (google.com) to avoid iframe blocking from google.it place URLs.
 const MAPS_EMBED_URL =
-  "https://maps.google.com/maps?hl=it&q=ML%20Servizi%2C%20Via%20Banchina%20dell%27%20Azoto%2015%2C%2030175%20Venezia&t=&z=17&ie=UTF8&iwloc=B&output=embed";
+  "https://maps.google.com/maps?hl=it&q=ML%20Servizi%20Venezia&t=&z=17&ie=UTF8&iwloc=B&output=embed";
 
 export function MapEmbed({
   className,

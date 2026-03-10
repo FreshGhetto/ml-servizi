@@ -7,9 +7,28 @@ import {defaultLocale, locales, type Locale} from "@/i18n/routing";
 export const SITE_URL = "https://mlservizi.eu";
 export const SITE_NAME = "ML Servizi";
 export const DEFAULT_OG_IMAGE = "/hero/hero-photogrammetry-church-complex.png";
-export const CONTACT_EMAIL = "mlservizi13@gmail.com";
+export const CONTACT_EMAIL = "mlservizi13@pec.it";
 export const CONTACT_PHONE = "+39 351 544 7413";
-export const MAPS_URL = "https://maps.google.com/?q=Via+Banchina+dell'+Azoto,+15,+30175+Venezia+VE";
+export const MAPS_URL = "https://maps.google.com/?q=ML+Servizi+Venezia";
+
+const LOCAL_KEYWORDS_BY_LOCALE: Record<Locale, string[]> = {
+  it: [
+    "Marghera",
+    "Venezia",
+    "Veneto",
+    "servizi tecnici Marghera",
+    "rilievi Venezia",
+    "geometra Veneto"
+  ],
+  en: [
+    "Marghera",
+    "Venice",
+    "Veneto",
+    "technical services in Marghera",
+    "surveying in Venice",
+    "surveyor in Veneto"
+  ]
+};
 
 const BCP47_BY_LOCALE: Record<Locale, string> = {
   it: "it-IT",
@@ -24,24 +43,20 @@ const OG_LOCALE_BY_LOCALE: Record<Locale, string> = {
 const BUSINESS_ADDRESS_BY_LOCALE: Record<
   Locale,
   {
-    streetAddress: string;
     addressLocality: string;
-    postalCode: string;
     addressRegion: string;
     addressCountry: string;
+    streetAddress?: string;
+    postalCode?: string;
   }
 > = {
   it: {
-    streetAddress: "Via Banchina dell' Azoto, 15",
-    addressLocality: "Venezia",
-    postalCode: "30175",
+    addressLocality: "Marghera",
     addressRegion: "VE",
     addressCountry: "IT"
   },
   en: {
-    streetAddress: "Via Banchina dell' Azoto, 15",
-    addressLocality: "Venice",
-    postalCode: "30175",
+    addressLocality: "Marghera",
     addressRegion: "VE",
     addressCountry: "IT"
   }
@@ -66,6 +81,13 @@ function normalizePath(pathname: string): string {
 function withSiteName(title: string): string {
   if (title.toLowerCase().includes(SITE_NAME.toLowerCase())) return title;
   return `${title} | ${SITE_NAME}`;
+}
+
+function mergeKeywords(locale: Locale, keywords?: string[]): string[] | undefined {
+  const merged = [...(keywords ?? []), ...LOCAL_KEYWORDS_BY_LOCALE[locale]].map((value) => value.trim()).filter(Boolean);
+  if (!merged.length) return undefined;
+
+  return Array.from(new Set(merged));
 }
 
 export function localizedPath(locale: Locale, pathname = "/"): string {
@@ -97,7 +119,7 @@ export function buildLocalizedMetadata(input: MetadataInput): Metadata {
   return {
     title: withSiteName(input.title),
     description: input.description,
-    keywords: input.keywords,
+    keywords: mergeKeywords(input.locale, input.keywords),
     alternates: {
       canonical: canonicalUrl,
       languages: languageAlternates
@@ -168,14 +190,28 @@ export function buildOrganizationJsonLd(locale: Locale): Record<string, unknown>
     telephone: CONTACT_PHONE,
     logo: absoluteUrl("/brand/logos/ml-servizi-logo-default.png"),
     image: [absoluteUrl(DEFAULT_OG_IMAGE)],
+    hasMap: MAPS_URL,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        email: CONTACT_EMAIL,
+        telephone: CONTACT_PHONE,
+        contactType: "customer support",
+        availableLanguage: locales.map((value) => BCP47_BY_LOCALE[value])
+      }
+    ],
     address: {
       "@type": "PostalAddress",
       ...address
     },
     areaServed: [
+      {"@type": "City", name: locale === "it" ? "Marghera" : "Marghera"},
+      {"@type": "City", name: locale === "it" ? "Venezia" : "Venice"},
+      {"@type": "AdministrativeArea", name: "Veneto"},
       {"@type": "Country", name: "Italy"},
       {"@type": "Country", name: "Switzerland"}
     ],
+    keywords: LOCAL_KEYWORDS_BY_LOCALE[locale].join(", "),
     availableLanguage: locales.map((value) => BCP47_BY_LOCALE[value]),
     sameAs: [MAPS_URL]
   };
@@ -228,7 +264,12 @@ export function buildServiceJsonLd(locale: Locale, service: Service): Record<str
     description: service.short[locale],
     serviceType: service.category,
     provider: {"@id": absoluteUrl("/#organization")},
-    areaServed: {"@type": "Country", name: "Italy"},
+    areaServed: [
+      {"@type": "City", name: locale === "it" ? "Marghera" : "Marghera"},
+      {"@type": "City", name: locale === "it" ? "Venezia" : "Venice"},
+      {"@type": "AdministrativeArea", name: "Veneto"},
+      {"@type": "Country", name: "Italy"}
+    ],
     availableLanguage: BCP47_BY_LOCALE[locale],
     url: localizedUrl(locale, `/services/${service.slug}`)
   };

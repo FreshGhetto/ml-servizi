@@ -2,6 +2,7 @@ import Link from "next/link";
 import type {Locale} from "@/i18n/routing";
 import {Container} from "./Container";
 import {getDict} from "@/i18n/dict";
+import {CONTACT_EMAIL} from "@/lib/seo";
 
 export async function Footer({locale}: {locale: Locale}) {
   const d = getDict(locale as any);
@@ -30,7 +31,7 @@ export async function Footer({locale}: {locale: Locale}) {
           <div className="text-sm">
             <div className="font-medium text-[rgb(var(--fg))]">{f.contactsTitle}</div>
             <ul className="link- mt-3 space-y-2 text-[rgb(var(--muted))]">
-              <li>{f.email}: <span className="text-[rgb(var(--fg))]">mlservizi13@gmail.com</span></li>
+              <li>{f.email}: <span className="text-[rgb(var(--fg))]">{CONTACT_EMAIL}</span></li>
               <li>
                 {f.phone}:{" "}
                 <a className="text-[rgb(var(--fg))]" href="tel:+393515447413">
