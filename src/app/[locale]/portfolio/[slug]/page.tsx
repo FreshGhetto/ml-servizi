@@ -67,6 +67,7 @@ export default async function PortfolioDetail({params}: {params: Promise<{locale
       alt: `${L(item.title)} - ${locale === "it" ? "galleria" : "gallery"} ${index + 1}`
     }))
   ];
+  const documents = item.documents ?? [];
   const structuredData = [
     buildBreadcrumbJsonLd([
       {name: "Home", url: localizedUrl(locale, "/")},
@@ -155,6 +156,27 @@ export default async function PortfolioDetail({params}: {params: Promise<{locale
           </ul>
         </MotionCard>
       </div>
+      {documents.length > 0 && (
+        <MotionCard className="mt-8 p-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-300">
+            {locale === "it" ? "Documenti allegati" : "Attached documents"}
+          </p>
+          <ul className="mt-4 space-y-3">
+            {documents.map((doc) => (
+              <li key={doc.href}>
+                <a
+                  href={doc.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-underline text-sm text-blue-700 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200"
+                >
+                  {L(doc.label)} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </MotionCard>
+      )}
 
       <TechnicalGallery images={technicalGallery} locale={locale} />
     </Container>

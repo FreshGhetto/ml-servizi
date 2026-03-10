@@ -2,8 +2,8 @@ export type Lang = "it" | "en";
 
 // TODO: Replace with the exact address shown on Google Business / Google Maps.
 const ADDRESS: Record<Lang, string> = {
-  it: "Marghera, Venezia (VE), Italia",
-  en: "Marghera, Venice, Italy"
+  it: "Via Banchina dell' Azoto, 15, 30175 Venezia VE",
+  en: "Via Banchina dell' Azoto, 15, 30175 Venezia VE"
 };
 
 export const dict: Record<Lang, any> = {
@@ -17,7 +17,7 @@ export const dict: Record<Lang, any> = {
       cta: "Richiedi preventivo"
     },
     Home: {
-      heroTitle: "Studio tecnico per rilievi, contabilità lavori e modellazione 3D",
+      heroTitle: "Studio tecnico per rilievi, computi metrici estimativi, contabilità lavori e modellazione 2D/3D",
       heroSubtitle:
         "ML Servizi è lo studio tecnico del Geom. Diego Bacci. Affianchiamo studi professionali, imprese, enti, amministratori e committenza privata nella gestione di rilievi tecnici, documentazione di cantiere, computi metrici, contabilità lavori e restituzioni digitali 2D/3D.",
       primaryCta: "Richiedi un preventivo",

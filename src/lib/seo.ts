@@ -7,9 +7,11 @@ import {defaultLocale, locales, type Locale} from "@/i18n/routing";
 export const SITE_URL = "https://mlservizi.eu";
 export const SITE_NAME = "ML Servizi";
 export const DEFAULT_OG_IMAGE = "/hero/hero-photogrammetry-church-complex.png";
-export const CONTACT_EMAIL = "mlservizi13@pec.it";
+export const CONTACT_EMAIL = "mlservizi13@gmail.com";
+export const CONTACT_PEC = "mlservizi13@pec.it";
+export const CONTACT_VAT = "IT03775220274";
 export const CONTACT_PHONE = "+39 351 544 7413";
-export const MAPS_URL = "https://maps.google.com/?q=ML+Servizi+Venezia";
+export const MAPS_URL = "https://maps.google.com/?q=Via+Banchina+dell'+Azoto,+15,+30175+Venezia+VE";
 
 const LOCAL_KEYWORDS_BY_LOCALE: Record<Locale, string[]> = {
   it: [
@@ -51,12 +53,16 @@ const BUSINESS_ADDRESS_BY_LOCALE: Record<
   }
 > = {
   it: {
-    addressLocality: "Marghera",
+    streetAddress: "Via Banchina dell' Azoto, 15",
+    postalCode: "30175",
+    addressLocality: "Venezia",
     addressRegion: "VE",
     addressCountry: "IT"
   },
   en: {
-    addressLocality: "Marghera",
+    streetAddress: "Via Banchina dell' Azoto, 15",
+    postalCode: "30175",
+    addressLocality: "Venice",
     addressRegion: "VE",
     addressCountry: "IT"
   }
@@ -188,6 +194,7 @@ export function buildOrganizationJsonLd(locale: Locale): Record<string, unknown>
     url: SITE_URL,
     email: CONTACT_EMAIL,
     telephone: CONTACT_PHONE,
+    vatID: CONTACT_VAT,
     logo: absoluteUrl("/brand/logos/ml-servizi-logo-default.png"),
     image: [absoluteUrl(DEFAULT_OG_IMAGE)],
     hasMap: MAPS_URL,

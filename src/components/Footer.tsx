@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type {Locale} from "@/i18n/routing";
 import {Container} from "./Container";
-import {getDict} from "@/i18n/dict";
-import {CONTACT_EMAIL} from "@/lib/seo";
+import {getAddress, getDict} from "@/i18n/dict";
+import {CONTACT_EMAIL, CONTACT_PEC, CONTACT_VAT} from "@/lib/seo";
 
 export async function Footer({locale}: {locale: Locale}) {
   const d = getDict(locale as any);
   const f = d.Footer;
+  const address = getAddress(locale as any);
 
   return (
     <footer className="mt-20 border-t border-[rgb(var(--border))] bg-[rgb(var(--bg))]">
@@ -31,14 +32,26 @@ export async function Footer({locale}: {locale: Locale}) {
           <div className="text-sm">
             <div className="font-medium text-[rgb(var(--fg))]">{f.contactsTitle}</div>
             <ul className="link- mt-3 space-y-2 text-[rgb(var(--muted))]">
-              <li>{f.email}: <span className="text-[rgb(var(--fg))]">{CONTACT_EMAIL}</span></li>
+              <li>{locale === "it" ? "Indirizzo" : "Address"}: <span className="text-[rgb(var(--fg))]">{address}</span></li>
+              <li>
+                {f.email}:{" "}
+                <a className="text-[rgb(var(--fg))]" href={`mailto:${CONTACT_EMAIL}`}>
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                PEC:{" "}
+                <a className="text-[rgb(var(--fg))]" href={`mailto:${CONTACT_PEC}`}>
+                  {CONTACT_PEC}
+                </a>
+              </li>
               <li>
                 {f.phone}:{" "}
                 <a className="text-[rgb(var(--fg))]" href="tel:+393515447413">
                   +39 351 544 7413
                 </a>
               </li>
-              <li>{f.vatPec}: <span className="text-[rgb(var(--fg))]">...</span></li>
+              <li>P.IVA: <span className="text-[rgb(var(--fg))]">{CONTACT_VAT}</span></li>
             </ul>
             <div className="mt-4 flex gap-4">
               <Link

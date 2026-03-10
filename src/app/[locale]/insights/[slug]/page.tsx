@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import type {Locale} from "@/i18n/routing";
@@ -57,6 +58,7 @@ export default async function InsightDetail({params}: {params: Promise<{locale: 
   if (!post) {
     notFound();
   }
+  const gallery = post.gallery ?? [];
 
   const structuredData = [
     buildBreadcrumbJsonLd([
@@ -83,6 +85,36 @@ export default async function InsightDetail({params}: {params: Promise<{locale: 
           </p>
         ))}
       </div>
+      {gallery.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-lg font-semibold text-[rgb(var(--fg))]">
+            {locale === "it" ? "Immagini e mappe" : "Images and maps"}
+          </h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {gallery.map((item) => (
+              <figure
+                key={item.src}
+                className="overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))]"
+              >
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={item.src}
+                    alt={item.alt[locale]}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                {item.caption && (
+                  <figcaption className="p-3 text-xs leading-relaxed text-[rgb(var(--muted))]">
+                    {item.caption[locale]}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
     </Container>
   );
 }

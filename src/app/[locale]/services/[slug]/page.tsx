@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import type {Locale} from "@/i18n/routing";
@@ -62,6 +63,7 @@ export default async function ServiceDetailPage({
   const useCases = s.useCases[locale] ?? s.useCases.it ?? s.useCases.en;
   const deepDive = s.deepDive?.[locale] ?? s.deepDive?.it ?? s.deepDive?.en ?? [];
   const advantages = s.advantages?.[locale] ?? s.advantages?.it ?? s.advantages?.en ?? [];
+  const gallery = s.gallery ?? [];
   const structuredData = [
     buildBreadcrumbJsonLd([
       {name: "Home", url: localizedUrl(locale, "/")},
@@ -124,6 +126,36 @@ export default async function ServiceDetailPage({
               <li key={index}>{item}</li>
             ))}
           </ul>
+        </div>
+      )}
+      {gallery.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-lg font-semibold text-[rgb(var(--fg))]">
+            {locale === "it" ? "Galleria tecnica" : "Technical gallery"}
+          </h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {gallery.map((item) => (
+              <figure
+                key={item.src}
+                className="overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))]"
+              >
+                <div className="relative aspect-[4/3] w-full">
+                  <Image
+                    src={item.src}
+                    alt={item.alt[locale]}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                {item.caption && (
+                  <figcaption className="p-3 text-xs leading-relaxed text-[rgb(var(--muted))]">
+                    {item.caption[locale]}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
         </div>
       )}
 

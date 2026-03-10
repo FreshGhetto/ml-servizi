@@ -6,7 +6,7 @@ import {getAddress, getDict} from "@/i18n/dict";
 import {Container} from "@/components/Container";
 import {MapEmbed, MAPS_PLACE_URL} from "@/components/MapEmbed";
 import {MotionCard} from "@/components/motion/MotionCard";
-import {CONTACT_EMAIL, CONTACT_PHONE, buildBreadcrumbJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
+import {CONTACT_EMAIL, CONTACT_PEC, CONTACT_PHONE, CONTACT_VAT, buildBreadcrumbJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
 
 export async function generateMetadata({
   params
@@ -23,8 +23,8 @@ export async function generateMetadata({
     title: d.Contact.title,
     description:
       locale === "it"
-        ? "Contatti ML Servizi a Marghera (Venezia), operativo in Veneto per rilievi, contabilita lavori e modellazione 3D."
-        : "Contact ML Servizi in Marghera (Venice), operating across Veneto for surveying, construction accounting and 3D modelling.",
+        ? "Contatti ML Servizi in Via Banchina dell' Azoto 15, Venezia, operativo in Veneto per rilievi, contabilita lavori e modellazione 3D."
+        : "Contact ML Servizi at Via Banchina dell' Azoto 15, Venice, operating across Veneto for surveying, construction accounting and 3D modelling.",
     keywords:
       locale === "it"
         ? ["contatti geometra venezia", "preventivo rilievi", "consulenza tecnica edilizia"]
@@ -47,9 +47,10 @@ export default async function ContactPage({params}: {params: Promise<{locale: st
   const t = d.Contact;
 
   const EMAIL = CONTACT_EMAIL;
-  const PEC = "mlservizi13@pec.it";
+  const PEC = CONTACT_PEC;
   const PHONE_DISPLAY = "+39 351 544 7413";
   const PHONE_TEL = "+393515447413";
+  const VAT = CONTACT_VAT;
   const ADDRESS = getAddress(locale as any);
   const structuredData = [
     buildBreadcrumbJsonLd([
@@ -134,6 +135,11 @@ export default async function ContactPage({params}: {params: Promise<{locale: st
                 <div>
                   <div className="text-[rgb(var(--muted))]">{t.addressLabel}</div>
                   <div className="mt-1 leading-relaxed text-[rgb(var(--fg))]">{ADDRESS}</div>
+                </div>
+
+                <div>
+                  <div className="text-[rgb(var(--muted))]">{locale === "it" ? "P.IVA" : "VAT ID"}</div>
+                  <div className="mt-1 leading-relaxed text-[rgb(var(--fg))]">{VAT}</div>
                 </div>
               </div>
 

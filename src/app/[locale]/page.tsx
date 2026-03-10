@@ -27,7 +27,7 @@ export async function generateMetadata({
     pathname: "/",
     title:
       locale === "it"
-        ? "ML Servizi - Rilievi, Contabilita Lavori e Modellazione 3D"
+        ? "Studio tecnico per rilievi, computi metrici estimativi, contabilità lavori e modellazione 2D/3D"
         : "ML Servizi - Surveying, Construction Accounting and 3D Modelling",
     description: d.Home.heroSubtitle,
     keywords:

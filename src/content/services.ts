@@ -2,6 +2,12 @@ import type {Locale} from "@/i18n/routing";
 
 export type ServiceCategory = "survey" | "drone" | "thermal" | "accounting" | "modeling";
 
+export type ServiceMedia = {
+  src: string;
+  alt: Record<Locale, string>;
+  caption?: Record<Locale, string>;
+};
+
 export type Service = {
   slug: string;
   category: ServiceCategory;
@@ -11,6 +17,7 @@ export type Service = {
   useCases: Record<Locale, string[]>;
   advantages?: Record<Locale, string[]>;
   deepDive?: Record<Locale, string[]>;
+  gallery?: ServiceMedia[];
 };
 
 export const services: Service[] = [
@@ -29,7 +36,31 @@ export const services: Service[] = [
     useCases: {
       it: ["Rilievi rapidi di aree e coperture", "Verifiche volumetriche", "Monitoraggio avanzamento lavori"],
       en: ["Fast surveys of areas and roofs", "Volumetric assessments", "Construction progress monitoring"]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/rilievo-tempio-possagno.webp",
+        alt: {
+          it: "Modello 3D fotogrammetrico del Tempio di Possagno",
+          en: "Photogrammetric 3D model of the Possagno Temple"
+        },
+        caption: {
+          it: "Rilievo misto con restituzione tridimensionale e controllo geometrico.",
+          en: "Mixed survey with 3D reconstruction and geometric control."
+        }
+      },
+      {
+        src: "/media/presentazioni/rilievo-condominio-modello3d.webp",
+        alt: {
+          it: "Nuvola di punti e modello 3D di edificio residenziale",
+          en: "Point cloud and 3D model of a residential building"
+        },
+        caption: {
+          it: "Output utilizzabile per restauro, riqualificazione e verifica quote.",
+          en: "Output suitable for restoration, retrofit, and dimensional checks."
+        }
+      }
+    ]
   },
   {
     slug: "termografia-drone",
@@ -122,7 +153,42 @@ export const services: Service[] = [
         "Processing combines RGB and thermal imagery, anomaly classification, georeferencing, and comparison with previous surveys when available.",
         "Final output goes beyond anomaly flagging: it provides operational priorities, confidence level, and concrete recommendations for follow-up or intervention."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/agricoltura-indici-multispettrali.webp",
+        alt: {
+          it: "Confronto tra indici multispettrali su coltivazione",
+          en: "Comparison of multispectral indices on crop rows"
+        },
+        caption: {
+          it: "Analisi comparata RGB, NDVI, NDRE e altri layer per lettura agronomica.",
+          en: "Combined reading of RGB, NDVI, NDRE, and related layers for agronomic interpretation."
+        }
+      },
+      {
+        src: "/media/presentazioni/agricoltura-zonazione-vigore.webp",
+        alt: {
+          it: "Mappa di zonazione per gestione differenziata del campo",
+          en: "Zonation map for variable field management"
+        },
+        caption: {
+          it: "Classi operative utili per irrigazione e priorita di intervento.",
+          en: "Operational classes for irrigation and intervention prioritization."
+        }
+      },
+      {
+        src: "/media/presentazioni/agricoltura-mappa-ndvi.webp",
+        alt: {
+          it: "Mappa NDVI georeferenziata con variabilita intra-parcella",
+          en: "Georeferenced NDVI map with intra-field variability"
+        },
+        caption: {
+          it: "Identificazione di stress e disuniformita prima dei sintomi visivi.",
+          en: "Detection of stress and non-uniformity before visible symptoms."
+        }
+      }
+    ]
   },
   {
     slug: "contabilita-sal",

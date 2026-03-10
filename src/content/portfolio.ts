@@ -13,6 +13,10 @@ export type CaseStudy = {
   coverImage: string;
   cardImage: string;
   gallery: string[];
+  documents?: Array<{
+    label: Record<Locale, string>;
+    href: string;
+  }>;
 };
 
 export const portfolio: CaseStudy[] = [
@@ -276,6 +280,176 @@ export const portfolio: CaseStudy[] = [
     coverImage: "/portfolio/projects/umberto-primo/cover-opt.webp",
     cardImage: "/portfolio/projects/umberto-primo/cover-lite.webp",
     gallery: []
+  },
+  {
+    slug: "garage-san-marco-venezia",
+    title: { it: "Rilievo tecnico - Garage San Marco", en: "Technical survey - Garage San Marco" },
+    location: { it: "Venezia (VE)", en: "Venice (IT)" },
+    sector: { it: "Infrastruttura urbana", en: "Urban infrastructure" },
+    year: "2026",
+    tags: ["Rilievo", "Prospetto", "Documentazione tecnica"],
+    summary: {
+      it: "Restituzione tecnica di prospetto e geometrie per supporto a verifiche su edificio complesso.",
+      en: "Technical restitution of facade and geometry to support checks on a complex building."
+    },
+    description: {
+      it: "Contesto: edificio multipiano in ambito urbano con necessita di rappresentazione tecnica leggibile. Obiettivo: fornire un quadro geometrico chiaro per analisi e pianificazione interventi. Attivita svolte: acquisizione da drone, organizzazione riferimenti di misura e restituzione grafica di prospetto. Elaborati/output: modello e tavole tecniche per confronto operativo.",
+      en: "Context: multi-storey urban building requiring clear technical representation. Objective: provide a readable geometric framework for analysis and intervention planning. Activities performed: drone acquisition, measurement reference organization, and facade restitution. Deliverables/output: model and technical sheets for operational review."
+    },
+    scope: {
+      it: ["Acquisizione immagini da drone", "Controllo riferimenti geometrici", "Restituzione tecnica del prospetto"],
+      en: ["Drone image acquisition", "Geometric reference checks", "Facade technical restitution"]
+    },
+    coverImage: "/portfolio/projects/garage-san-marco-venezia/cover-opt.webp",
+    cardImage: "/portfolio/projects/garage-san-marco-venezia/cover-lite.webp",
+    gallery: ["/portfolio/projects/garage-san-marco-venezia/gallery-01.webp"]
+  },
+  {
+    slug: "golf-lido-malamocco",
+    title: { it: "Ortofoto e modellazione - Golf Lido Malamocco", en: "Orthophoto and modeling - Golf Lido Malamocco" },
+    location: { it: "Lido di Venezia (VE)", en: "Venice Lido (IT)" },
+    sector: { it: "Ambiente e territorio", en: "Environment and territory" },
+    year: "2026",
+    tags: ["Ortofoto", "Inquadramento territoriale", "Drone"],
+    summary: {
+      it: "Rilievo aereo di area estesa con restituzione utile a lettura territoriale e pianificazione tecnica.",
+      en: "Aerial survey of a wide area with deliverables for territorial interpretation and technical planning."
+    },
+    description: {
+      it: "Contesto: area estesa con necessita di inquadramento planimetrico e supporto a valutazioni tecniche. Obiettivo: ottenere una base fotografica georeferenziabile e coerente con l'assetto del territorio. Attivita svolte: rilievo da drone, allineamento dati e preparazione degli elaborati. Elaborati/output: ortofoto e immagini tecniche per analisi di contesto.",
+      en: "Context: wide area requiring planimetric framing and technical evaluation support. Objective: obtain a georeference-ready photographic base consistent with territorial layout. Activities performed: drone survey, data alignment, and deliverable preparation. Deliverables/output: orthophotos and technical imagery for context analysis."
+    },
+    scope: {
+      it: ["Rilievo area estesa", "Inquadramento planimetrico", "Restituzione ortofotografica"],
+      en: ["Wide-area survey", "Planimetric framing", "Orthophoto restitution"]
+    },
+    coverImage: "/portfolio/projects/golf-lido-malamocco/cover-opt.webp",
+    cardImage: "/portfolio/projects/golf-lido-malamocco/cover-lite.webp",
+    gallery: [
+      "/portfolio/projects/golf-lido-malamocco/gallery-01.webp",
+      "/portfolio/projects/golf-lido-malamocco/gallery-02.webp"
+    ]
+  },
+  {
+    slug: "marghera",
+    title: { it: "Rilievo edificio residenziale - Marghera", en: "Residential building survey - Marghera" },
+    location: { it: "Marghera (VE)", en: "Marghera, Venice (IT)" },
+    sector: { it: "Residenziale", en: "Residential" },
+    year: "2026",
+    tags: ["Nuvola di punti", "Rilievo 3D", "Supporto progettazione"],
+    summary: {
+      it: "Acquisizione e modellazione dello stato di fatto per supportare verifiche e aggiornamento elaborati.",
+      en: "As-built acquisition and modeling to support checks and deliverable updates."
+    },
+    description: {
+      it: "Contesto: edificio residenziale con necessita di lettura precisa dello stato di fatto. Obiettivo: disporre di una base tridimensionale affidabile per valutazioni progettuali e operative. Attivita svolte: rilievo geometrico, acquisizione fotografica e organizzazione della restituzione tecnica. Elaborati/output: modello 3D e materiale tecnico per il coordinamento delle fasi successive.",
+      en: "Context: residential building requiring accurate as-built understanding. Objective: provide a reliable 3D baseline for design and operational assessments. Activities performed: geometric survey, photographic acquisition, and technical restitution setup. Deliverables/output: 3D model and technical material for coordinating subsequent phases."
+    },
+    scope: {
+      it: ["Rilievo geometrico di dettaglio", "Restituzione tridimensionale", "Supporto alla revisione progettuale"],
+      en: ["Detailed geometric survey", "3D restitution", "Support for design revision"]
+    },
+    coverImage: "/portfolio/projects/marghera/cover-opt.webp",
+    cardImage: "/portfolio/projects/marghera/cover-lite.webp",
+    gallery: [
+      "/portfolio/projects/marghera/gallery-01.webp",
+      "/portfolio/projects/marghera/gallery-02.webp"
+    ]
+  },
+  {
+    slug: "marghera-veneziana",
+    title: { it: "Analisi e documentazione tecnica - Marghera Veneziana", en: "Technical analysis and documentation - Marghera Veneziana" },
+    location: { it: "Marghera (VE)", en: "Marghera, Venice (IT)" },
+    sector: { it: "Condominio / patrimonio edilizio", en: "Condominium / built heritage" },
+    year: "2026",
+    tags: ["Rilievo", "Documentazione", "Relazione tecnica"],
+    summary: {
+      it: "Supporto tecnico con rilievo e allegati documentali per valutazioni sullo stato dell'immobile.",
+      en: "Technical support with survey data and documentary attachments for building condition assessments."
+    },
+    description: {
+      it: "Contesto: fabbricato residenziale con necessita di consolidare dati visivi e documentazione tecnica in un unico quadro operativo. Obiettivo: facilitare lettura, confronto e tracciabilita delle valutazioni tecniche. Attivita svolte: rilievo da drone, raccolta elaborati e strutturazione della documentazione. Elaborati/output: materiale tecnico con allegato PDF specialistico.",
+      en: "Context: residential building requiring visual data and technical documentation to be consolidated into one operational framework. Objective: improve readability, comparison, and traceability of technical assessments. Activities performed: drone survey, deliverable collection, and documentation structuring. Deliverables/output: technical package with a specialist PDF attachment."
+    },
+    scope: {
+      it: ["Rilievo e restituzione stato di fatto", "Organizzazione documentazione tecnica", "Supporto alla lettura specialistica"],
+      en: ["As-built survey and restitution", "Technical documentation organization", "Support for specialist interpretation"]
+    },
+    coverImage: "/portfolio/projects/marghera-veneziana/cover-opt.webp",
+    cardImage: "/portfolio/projects/marghera-veneziana/cover-lite.webp",
+    gallery: [
+      "/portfolio/projects/marghera-veneziana/gallery-01.webp",
+      "/portfolio/projects/marghera-veneziana/gallery-02.webp"
+    ],
+    documents: [
+      {
+        label: {
+          it: "Relazione termografica - Comune di Venezia (PDF)",
+          en: "Thermal report - Municipality of Venice (PDF)"
+        },
+        href: "/portfolio/projects/marghera-veneziana/relazione-termografica-comune-venezia.pdf"
+      }
+    ]
+  },
+  {
+    slug: "mestre-veneziana",
+    title: { it: "Rilievo urbano - Mestre Veneziana", en: "Urban survey - Mestre Veneziana" },
+    location: { it: "Mestre (VE)", en: "Mestre, Venice (IT)" },
+    sector: { it: "Edilizia urbana", en: "Urban buildings" },
+    year: "2026",
+    tags: ["Rilievo 3D", "Prospetti", "Coordinamento tecnico"],
+    summary: {
+      it: "Documentazione geometrica e visuale per supportare analisi e pianificazione di interventi su fabbricati urbani.",
+      en: "Geometric and visual documentation to support analysis and intervention planning on urban buildings."
+    },
+    description: {
+      it: "Contesto: isolato urbano con necessita di elaborati coerenti per analisi tecnica e coordinamento operativo. Obiettivo: fornire una base aggiornata di prospetti e geometrie utili alla progettazione. Attivita svolte: acquisizione da drone, ordinamento delle viste e preparazione restituzione. Elaborati/output: set di immagini tecniche e supporto alla fase decisionale.",
+      en: "Context: urban block requiring coherent deliverables for technical analysis and operational coordination. Objective: provide an updated baseline of facades and geometry for design activities. Activities performed: drone acquisition, view organization, and restitution preparation. Deliverables/output: technical image set and decision-support material."
+    },
+    scope: {
+      it: ["Acquisizione su piu fronti", "Sintesi geometrica del costruito", "Condivisione output per revisione"],
+      en: ["Multi-side acquisition", "Geometric synthesis of built environment", "Output sharing for review"]
+    },
+    coverImage: "/portfolio/projects/mestre-veneziana/cover-opt.webp",
+    cardImage: "/portfolio/projects/mestre-veneziana/cover-lite.webp",
+    gallery: [
+      "/portfolio/projects/mestre-veneziana/gallery-01.webp",
+      "/portfolio/projects/mestre-veneziana/gallery-02.webp",
+      "/portfolio/projects/mestre-veneziana/gallery-03.webp",
+      "/portfolio/projects/mestre-veneziana/gallery-04.webp"
+    ]
+  },
+  {
+    slug: "ospedale-dolo",
+    title: { it: "Ispezione e rilievo tecnico - Ospedale di Dolo", en: "Technical inspection and survey - Dolo Hospital" },
+    location: { it: "Dolo (VE)", en: "Dolo, Venice (IT)" },
+    sector: { it: "Sanitario / infrastruttura complessa", en: "Healthcare / complex facility" },
+    year: "2023",
+    tags: ["Ispezione", "Drone", "Monitoraggio tecnico"],
+    summary: {
+      it: "Rilievo e ispezione su complesso ospedaliero con documentazione fotografica tecnica ad alta copertura.",
+      en: "Survey and inspection of a hospital complex with high-coverage technical photographic documentation."
+    },
+    description: {
+      it: "Contesto: struttura sanitaria estesa con esigenze di monitoraggio visivo e lettura tecnica di coperture e fronti. Obiettivo: raccogliere dati affidabili per verifica stato e pianificazione interventi manutentivi. Attivita svolte: voli ispettivi, acquisizione fotografica multi-angolo e organizzazione degli elaborati. Elaborati/output: set immagini tecnico-operativo e base per valutazioni successive.",
+      en: "Context: large healthcare facility requiring visual monitoring and technical interpretation of roofs and facades. Objective: collect reliable data for condition checks and maintenance planning. Activities performed: inspection flights, multi-angle image acquisition, and deliverable organization. Deliverables/output: technical-operational image set and baseline for subsequent assessments."
+    },
+    scope: {
+      it: ["Ispezione aerea delle coperture", "Documentazione fotografica tecnica", "Supporto a valutazioni manutentive"],
+      en: ["Aerial roof inspection", "Technical photographic documentation", "Support for maintenance assessments"]
+    },
+    coverImage: "/portfolio/projects/ospedale-dolo/cover-opt.webp",
+    cardImage: "/portfolio/projects/ospedale-dolo/cover-lite.webp",
+    gallery: [
+      "/portfolio/projects/ospedale-dolo/gallery-01.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-02.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-03.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-04.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-05.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-06.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-07.webp",
+      "/portfolio/projects/ospedale-dolo/gallery-08.webp"
+    ]
   }
 ];
 

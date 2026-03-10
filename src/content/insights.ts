@@ -1,10 +1,17 @@
 import type {Locale} from "@/i18n/routing";
 
+export type InsightMedia = {
+  src: string;
+  alt: Record<Locale, string>;
+  caption?: Record<Locale, string>;
+};
+
 export type Insight = {
   slug: string;
   title: Record<Locale, string>;
   excerpt: Record<Locale, string>;
   body: Record<Locale, string[]>;
+  gallery?: InsightMedia[];
 };
 
 export const insights: Insight[] = [
@@ -26,7 +33,31 @@ export const insights: Insight[] = [
         "It performs best with textured surfaces, stable lighting and a properly planned capture workflow.",
         "Typical outputs include orthophotos, point clouds and meshes, with accuracy tied to acquisition quality."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/rilievo-tempio-possagno.webp",
+        alt: {
+          it: "Esempio di restituzione fotogrammetrica tridimensionale",
+          en: "Example of photogrammetric 3D reconstruction"
+        },
+        caption: {
+          it: "Nuvola di punti e mesh integrate per analisi metrica.",
+          en: "Integrated point cloud and mesh for metric analysis."
+        }
+      },
+      {
+        src: "/media/presentazioni/rilievo-condominio-modello3d.webp",
+        alt: {
+          it: "Modello 3D di edificio da rilievo misto",
+          en: "3D building model from mixed survey"
+        },
+        caption: {
+          it: "Output utile per restauro, progettazione e verifica geometrica.",
+          en: "Useful output for restoration, design, and geometric verification."
+        }
+      }
+    ]
   },
   {
     slug: "cos-e-la-termografia",
@@ -46,7 +77,20 @@ export const insights: Insight[] = [
         "Reliable results depend on proper environmental conditions, calibrated sensors and technical interpretation.",
         "Final reports usually include annotated thermal imagery, critical areas and operational recommendations."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/agricoltura-indici-multispettrali.webp",
+        alt: {
+          it: "Confronto tra layer multispettrali e mappe di vigore",
+          en: "Comparison between multispectral layers and vigor maps"
+        },
+        caption: {
+          it: "Lettura combinata di indici per localizzare anomalie e trend.",
+          en: "Combined index reading to localize anomalies and trends."
+        }
+      }
+    ]
   },
   {
     slug: "rilievo-topografico-e-fotogrammetria-quando-scegliere-cosa",
@@ -325,7 +369,20 @@ export const insights: Insight[] = [
         "The operational benefit is twofold: predictive rather than reactive maintenance, and better cost/benefit on large plants.",
         "When repeated periodically, thermal inspections build a performance baseline to verify whether corrective actions actually restore expected thermal behavior."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/agricoltura-zonazione-vigore.webp",
+        alt: {
+          it: "Esempio di mappa classificata per severita delle anomalie",
+          en: "Example of severity-classified anomaly map"
+        },
+        caption: {
+          it: "Metodo di classificazione applicabile anche al monitoraggio fotovoltaico per priorita di intervento.",
+          en: "Classification workflow also applicable to PV monitoring and intervention prioritization."
+        }
+      }
+    ]
   },
   {
     slug: "agricoltura-di-precisione-con-termografia-da-drone",
@@ -354,7 +411,31 @@ export const insights: Insight[] = [
         "Main benefits include water optimization, reduced prolonged stress, improved production uniformity, and clearer agronomic intervention priorities.",
         "The outcome is not just a map: it is a technical decision framework linking thermal anomaly, probable cause, and recommended action."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/agricoltura-indici-multispettrali.webp",
+        alt: {
+          it: "Set di indici multispettrali su filari agricoli",
+          en: "Multispectral index set on crop rows"
+        },
+        caption: {
+          it: "Confronto tra layer per diagnosi differenziale delle criticita vegetative.",
+          en: "Cross-layer comparison for differential diagnosis of crop issues."
+        }
+      },
+      {
+        src: "/media/presentazioni/agricoltura-mappa-ndvi.webp",
+        alt: {
+          it: "Mappa NDVI con variabilita spaziale del vigore",
+          en: "NDVI map with spatial variability of vigor"
+        },
+        caption: {
+          it: "Supporto a irrigazione di precisione e gestione intra-parcella.",
+          en: "Support for precision irrigation and intra-field management."
+        }
+      }
+    ]
   },
   {
     slug: "monitoraggio-termico-multitemporale-benefici-e-kpi",
@@ -383,6 +464,19 @@ export const insights: Insight[] = [
         "Economic return comes from fewer late-stage failures, better resource allocation, and measurable verification of corrective actions.",
         "In short, periodic thermal work turns a one-time survey into a continuous control process based on objective evidence and verifiable indicators."
       ]
-    }
+    },
+    gallery: [
+      {
+        src: "/media/presentazioni/agricoltura-zonazione-vigore.webp",
+        alt: {
+          it: "Zonazione tecnica utile al confronto multitemporale",
+          en: "Technical zonation map for multi-temporal comparison"
+        },
+        caption: {
+          it: "Le classi territoriali diventano KPI monitorabili nel tempo.",
+          en: "Spatial classes become trackable KPIs over time."
+        }
+      }
+    ]
   }
 ];
