@@ -12,37 +12,39 @@ export const dict: Record<Lang, any> = {
       services: "Servizi",
       portfolio: "Lavori",
       insights: "Approfondimenti",
-      about: "Chi sono",
+      about: "Studio",
       contact: "Contatti",
-      cta: "Richiedi consulenza"
+      cta: "Richiedi preventivo"
     },
     Home: {
-      heroTitle: "Servizi tecnici per rilievi, contabilità lavori e modellazione 3D",
+      heroTitle: "Studio tecnico per rilievi, contabilità lavori e modellazione 3D",
       heroSubtitle:
-        "Operativo in Veneto. Disponibile per collaborazioni e trasferte anche fuori Italia (CH inclusa).",
-      primaryCta: "Vedi servizi",
-      secondaryCta: "Contattami",
+        "ML Servizi è lo studio tecnico del Geom. Diego Bacci. Affianchiamo studi professionali, imprese, enti, amministratori e committenza privata nella gestione di rilievi tecnici, documentazione di cantiere, computi metrici, contabilità lavori e restituzioni digitali 2D/3D.",
+      primaryCta: "Richiedi un preventivo",
+      secondaryCta: "Contatti",
       servicesTitle: "Servizi principali",
-      servicesDesc: "Una selezione dei servizi più richiesti, con deliverable e casi d'uso.",
+      servicesDesc:
+        "Una realtà tecnica organizzata, flessibile e orientata alla precisione, in grado di seguire sia incarichi puntuali sia commesse più articolate.",
       workTitle: "Lavori selezionati",
-      workDesc: "Esempi e casi studio (pubblica solo ciò che puoi condividere).",
+      workDesc: "Interventi tecnici selezionati, sviluppati con metodo, controllo documentale e chiarezza operativa.",
       seeWork: "Vedi",
       locationTitle: "Dove trovarci",
-      locationDesc: "Sede e recapiti. Su appuntamento per sopralluoghi e trasferte.",
+      locationDesc: "Sede operativa e recapiti. Disponibilità su appuntamento per sopralluoghi e trasferte.",
       openInMaps: "Apri su Google Maps",
       talkTitle: "Parliamone",
-      talkDesc: "Scrivimi due righe: ti rispondo con domande mirate e una proposta chiara.",
-      requestQuote: "Richiedi preventivo"
+      talkDesc: "Contattaci per definire obiettivi, elaborati richiesti, tempi operativi e modalità di supporto.",
+      requestQuote: "Richiedi un preventivo"
     },
     Common: {
-      requestQuote: "Richiedi preventivo",
+      requestQuote: "Richiedi un preventivo",
       learnMore: "Approfondisci",
       backToTop: "Torna su"
     },
     Contact: {
       title: "Contatti",
-      subtitle: "Richieste, preventivi, collaborazioni.",
-      cardHint: "Compila il form: si aprirà il tuo client mail con il messaggio già pronto (nessun account richiesto).",
+      subtitle: "Richieste di preventivo, collaborazioni e informazioni sui servizi.",
+      cardHint:
+        "Per richieste di preventivo, collaborazioni o informazioni sui servizi, è possibile contattare ML Servizi tramite i riferimenti presenti in questa pagina. Ogni richiesta viene valutata in relazione al tipo di intervento, agli elaborati necessari e alle tempistiche richieste.",
       detailsTitle: "Recapiti",
       addressLabel: "Indirizzo",
       hoursLabel: "Orari",
@@ -58,8 +60,8 @@ export const dict: Record<Lang, any> = {
       send: "Apri email"
     },
     Footer: {
-      about1: "Geometra – rilievi, contabilità lavori, modellazione 3D.",
-      about2: "Operativo in Veneto · Disponibile per trasferte e collaborazioni anche fuori Italia.",
+      about1: "ML Servizi è lo studio tecnico del Geom. Diego Bacci.",
+      about2: "Realtà professionale organizzata per rilievi, contabilità lavori e modellazione digitale 2D/3D.",
       menuTitle: "Menu",
       services: "Servizi",
       work: "Lavori",
@@ -87,26 +89,27 @@ export const dict: Record<Lang, any> = {
       services: "Services",
       portfolio: "Work",
       insights: "Insights",
-      about: "About",
+      about: "Studio",
       contact: "Contact",
       cta: "Request a quote"
     },
     Home: {
-      heroTitle: "Technical services for surveying, construction accounting and 3D modelling",
+      heroTitle: "Technical studio for surveying, construction accounting and 3D modelling",
       heroSubtitle:
-        "Based in Veneto (Italy). Available for collaborations and travel, including Switzerland (CH).",
-      primaryCta: "View services",
-      secondaryCta: "Contact",
+        "ML Servizi is the technical studio of Geom. Diego Bacci. We support professional firms, contractors, institutions, property managers and private clients in technical surveys, site documentation, bills of quantities, construction accounting and 2D/3D digital deliverables.",
+      primaryCta: "Request a quote",
+      secondaryCta: "Contact us",
       servicesTitle: "Key services",
-      servicesDesc: "A curated selection of the most requested services, with deliverables and use cases.",
+      servicesDesc:
+        "An organized and flexible technical practice focused on precision, able to manage both targeted assignments and more complex commissions.",
       workTitle: "Selected work",
-      workDesc: "Examples and case studies (publish only what you can share).",
+      workDesc: "Selected technical projects developed with method, document control and operational clarity.",
       seeWork: "View",
       locationTitle: "Where to find us",
-      locationDesc: "Office location and contacts. By appointment for site visits and travel.",
+      locationDesc: "Office location and contacts. Available by appointment for site visits and travel.",
       openInMaps: "Open in Google Maps",
       talkTitle: "Let’s talk",
-      talkDesc: "Write a couple of lines: I’ll reply with focused questions and a clear proposal.",
+      talkDesc: "Contact us to define objectives, required deliverables, timing and support workflow.",
       requestQuote: "Request a quote"
     },
     Common: {
@@ -116,8 +119,9 @@ export const dict: Record<Lang, any> = {
     },
     Contact: {
       title: "Contact",
-      subtitle: "Requests, quotes, collaborations.",
-      cardHint: "Fill the form: it will open your email client with a prefilled message (no account needed).",
+      subtitle: "Quote requests, collaborations and service information.",
+      cardHint:
+        "For quote requests, collaborations or service information, you can contact ML Servizi through the details on this page. Each request is assessed according to the type of intervention, required deliverables and expected timing.",
       detailsTitle: "Details",
       addressLabel: "Address",
       hoursLabel: "Hours",
@@ -133,8 +137,8 @@ export const dict: Record<Lang, any> = {
       send: "Open email"
     },
     Footer: {
-      about1: "Surveyor – site surveys, construction accounting, 3D modeling.",
-      about2: "Based in Veneto (Italy) · Available for travel and cross-border collaborations.",
+      about1: "ML Servizi is the technical studio of Geom. Diego Bacci.",
+      about2: "A structured professional practice for surveying, construction accounting and 2D/3D digital modeling.",
       menuTitle: "Menu",
       services: "Services",
       work: "Work",

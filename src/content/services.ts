@@ -17,16 +17,16 @@ export const services: Service[] = [
     category: "drone",
     title: { it: "Fotogrammetria da drone", en: "Drone photogrammetry" },
     short: {
-      it: "Ortofoto, modelli 3D e misure affidabili per cantieri, coperture e aree.",
-      en: "Orthomosaics, 3D models and reliable measurements for sites, roofs and areas."
+      it: "Rilievi fotogrammetrici con drone per ortofoto georeferenziate, modelli 3D e basi metriche affidabili.",
+      en: "Drone photogrammetric surveys for georeferenced orthophotos, 3D models and reliable metric baselines."
     },
     deliverables: {
-      it: ["Ortofoto (GeoTIFF/PDF)", "Modello 3D", "Sezioni/quote", "Report tecnico"],
-      en: ["Orthomosaic (GeoTIFF/PDF)", "3D model", "Sections/elevations", "Technical report"]
+      it: ["Ortofoto georeferenziata (GeoTIFF/PDF)", "Modello 3D", "Sezioni e quote", "Report tecnico"],
+      en: ["Georeferenced orthophoto (GeoTIFF/PDF)", "3D model", "Sections and elevations", "Technical report"]
     },
     useCases: {
-      it: ["Rilievo rapido di aree e coperture", "Volumetrie terre/cumuli", "Monitoraggio avanzamento"],
-      en: ["Fast surveys for areas and roofs", "Stockpile/earthworks volumes", "Progress monitoring"]
+      it: ["Rilievi rapidi di aree e coperture", "Verifiche volumetriche", "Monitoraggio avanzamento lavori"],
+      en: ["Fast surveys of areas and roofs", "Volumetric assessments", "Construction progress monitoring"]
     }
   },
   {
@@ -34,16 +34,16 @@ export const services: Service[] = [
     category: "thermal",
     title: { it: "Ispezioni termiche con drone", en: "Drone thermal inspections" },
     short: {
-      it: "Individuazione di anomalie termiche su edifici, coperture e impianti (dove applicabile).",
-      en: "Detect thermal anomalies on buildings, roofs and systems (where applicable)."
+      it: "Ispezioni termiche per individuare anomalie su coperture, involucri e impianti con lettura tecnica dei risultati.",
+      en: "Thermal inspections to detect anomalies on roofs, envelopes and systems with technical interpretation of results."
     },
     deliverables: {
-      it: ["Mappa termica", "Report con immagini annotate", "Indicazioni operative"],
-      en: ["Thermal map", "Report with annotated images", "Operational notes"]
+      it: ["Mappa termica", "Report con immagini annotate", "Indicazioni tecniche operative"],
+      en: ["Thermal map", "Report with annotated imagery", "Operational technical notes"]
     },
     useCases: {
-      it: ["Ponti termici e dispersioni", "Verifica coperture e infiltrazioni (supporto)", "Controllo fotovoltaico (hotspots)"],
-      en: ["Thermal bridges & heat loss", "Roof checks & moisture indications (support)", "PV hotspot checks"]
+      it: ["Verifica ponti termici e dispersioni", "Supporto alla lettura di criticità su coperture", "Controlli termici su impianti fotovoltaici"],
+      en: ["Verification of thermal bridges and heat loss", "Supportive interpretation of roof criticalities", "Thermal checks on photovoltaic systems"]
     }
   },
   {
@@ -51,16 +51,16 @@ export const services: Service[] = [
     category: "accounting",
     title: { it: "Contabilità lavori e SAL", en: "Construction accounting & progress statements" },
     short: {
-      it: "Computi, SAL, analisi prezzi e controllo costi con documentazione ordinata e difendibile.",
-      en: "BOQs, progress statements, price analysis and cost control with clear documentation."
+      it: "Controllo tecnico-economico dell'opera tramite computi metrici, analisi prezzi, SAL e contabilità lavori.",
+      en: "Technical and cost control of works through BOQs, price analysis, progress statements and construction accounting."
     },
     deliverables: {
-      it: ["Computo metrico", "SAL", "Quadri economici", "Elenco prezzi/nuovi prezzi"],
-      en: ["Bill of quantities", "Progress statements", "Cost summaries", "Price list / new prices"]
+      it: ["Computo metrico estimativo", "SAL", "Quadri economici", "Elenco prezzi e nuovi prezzi"],
+      en: ["Bill of quantities", "Progress statements", "Cost summaries", "Price list and new prices"]
     },
     useCases: {
-      it: ["Supporto a DL e imprese", "Verifica forniture e misure", "Rendicontazioni"],
-      en: ["Support for site management and contractors", "Supply/measurement checks", "Reporting"]
+      it: ["Supporto a direzione lavori e imprese", "Verifica misure e forniture", "Rendicontazione tecnica di cantiere"],
+      en: ["Support to site management and contractors", "Measurement and supply checks", "Technical site reporting"]
     }
   },
   {
@@ -68,16 +68,16 @@ export const services: Service[] = [
     category: "modeling",
     title: { it: "Modellazione 3D (Archicad)", en: "3D modelling (Archicad)" },
     short: {
-      it: "Modelli tecnici puliti e render essenziali per comunicare scelte e interferenze.",
-      en: "Clean technical models and minimal renders to communicate decisions and clashes."
+      it: "Produzione di elaborati 2D/3D e modelli tecnici per supportare progettazione, coordinamento e condivisione.",
+      en: "Production of 2D/3D deliverables and technical models to support design, coordination and communication."
     },
     deliverables: {
-      it: ["Modello 3D", "Viste e tavole", "Render tecnici essenziali"],
-      en: ["3D model", "Views & sheets", "Minimal technical renders"]
+      it: ["Modello 3D", "Planimetrie, prospetti e sezioni", "Tavole tecniche e viste di coordinamento"],
+      en: ["3D model", "Plans, elevations and sections", "Technical sheets and coordination views"]
     },
     useCases: {
-      it: ["Verifica interferenze", "Presentazioni tecniche", "Supporto progettazione"],
-      en: ["Clash awareness", "Technical presentations", "Design support"]
+      it: ["Supporto alla progettazione", "Verifica interferenze e congruenze", "Presentazioni e condivisione tecnica"],
+      en: ["Design support", "Clash and consistency checks", "Technical presentation and sharing"]
     }
   }
 ];

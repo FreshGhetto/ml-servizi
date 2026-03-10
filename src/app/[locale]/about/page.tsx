@@ -45,21 +45,41 @@ export default async function AboutPage({params}: {params: Promise<{locale: stri
         {locale === "it" ? (
           <>
             <p>
-              ML Servizi offre supporto tecnico per cantieri e studi: rilievi, restituzioni CAD, contabilità lavori (computi, SAL),
-              analisi prezzi e modellazione 3D con flussi puliti e deliverable chiari.
+              ML Servizi è lo studio tecnico del Geom. Diego Bacci, attivo nei rilievi, nella documentazione tecnica, nella
+              contabilità lavori e nella modellazione digitale 2D/3D.
             </p>
             <p>
-              L’obiettivo è fornire documentazione affidabile, misurabile e pronta per le decisioni: dal rilievo in sito alla consegna finale.
+              Lo studio opera con un approccio basato su precisione, organizzazione e chiarezza degli elaborati, affiancando studi
+              professionali, imprese, committenza privata ed enti in attività tecniche di diversa complessità.
+            </p>
+            <p>
+              L’esperienza maturata nel settore edilizio si integra con l’utilizzo di strumenti e software evoluti per il rilievo e la
+              restituzione tecnica, tra cui fotogrammetria da drone, laser scanner, ortofoto, nuvole di punti, modellazione 3D/BIM,
+              computi metrici, analisi prezzi e contabilità di cantiere.
+            </p>
+            <p>
+              ML Servizi si propone come realtà tecnico-professionale flessibile e strutturata, capace di seguire sia incarichi
+              puntuali sia commesse più articolate, anche in coordinamento con altri professionisti e imprese.
             </p>
           </>
         ) : (
           <>
             <p>
-              ML Servizi provides technical support for sites and design offices: surveys, CAD deliverables, construction accounting (BOQs, progress statements),
-              price analysis and 3D modelling with clean workflows and clear outputs.
+              ML Servizi is the technical studio of Geom. Diego Bacci, operating in surveying, technical documentation, construction
+              accounting and 2D/3D digital modelling.
             </p>
             <p>
-              The goal is reliable, measurable documentation that is ready for decisions—from field survey to final delivery.
+              The practice works with a method based on precision, organization and clarity of deliverables, supporting professional
+              firms, contractors, private clients and institutions across technical activities of different complexity.
+            </p>
+            <p>
+              Field experience in construction integrates with advanced tools and software for survey and technical restitution,
+              including drone photogrammetry, laser scanning, orthophotos, point clouds, 3D/BIM modelling, BOQs, price analysis and
+              construction accounting.
+            </p>
+            <p>
+              ML Servizi positions itself as a flexible yet structured technical practice, able to handle both targeted assignments and
+              more articulated commissions, also in coordination with other professionals and contractors.
             </p>
           </>
         )}

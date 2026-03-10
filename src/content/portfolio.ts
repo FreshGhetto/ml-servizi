@@ -28,8 +28,8 @@ export const portfolio: CaseStudy[] = [
       en: "Preliminary intervention with framing sheets, perspectives and technical coordination support."
     },
     description: {
-      it: "Testo provvisorio: lavoro sviluppato per definire impostazione tecnica, controllo elaborati e chiarezza comunicativa verso committenza e imprese.",
-      en: "Temporary text: project developed to define technical setup, control deliverables and communicate clearly with clients and contractors."
+      it: "Contesto: intervento preliminare in ambito urbano con necessita di coordinamento tra piu interlocutori. Obiettivo: predisporre una base tecnica leggibile per le fasi successive. Attivita svolte: impostazione documentale, controllo elaborati e supporto al coordinamento operativo. Elaborati/output: tavole di inquadramento, prospettive e documentazione tecnica condivisibile.",
+      en: "Context: preliminary urban intervention requiring coordination among multiple stakeholders. Objective: prepare a readable technical baseline for subsequent phases. Activities performed: document setup, deliverable control and operational coordination support. Deliverables/output: framing sheets, perspectives and shareable technical documentation."
     },
     scope: {
       it: ["Raccolta e organizzazione documentazione", "Impostazione grafica tavole", "Supporto tecnico operativo"],
@@ -55,8 +55,8 @@ export const portfolio: CaseStudy[] = [
       en: "Technical documentation for a heritage context focused on accuracy and readability."
     },
     description: {
-      it: "Testo provvisorio: incarico impostato per produrre una base tecnica affidabile, utile a valutazioni progettuali e successive fasi operative.",
-      en: "Temporary text: assignment structured to deliver a reliable technical baseline for design decisions and subsequent operational phases."
+      it: "Contesto: edificio storico con necessita di elaborati accurati e facilmente consultabili. Obiettivo: fornire una base tecnica affidabile per valutazioni progettuali e operative. Attivita svolte: rilievo geometrico, organizzazione delle informazioni e strutturazione degli elaborati. Elaborati/output: documentazione tecnica per committenza e team di progetto.",
+      en: "Context: historic building requiring accurate and easily consultable deliverables. Objective: provide a reliable technical baseline for design and operational evaluations. Activities performed: geometric survey, information organization and deliverable structuring. Deliverables/output: technical documentation for client and project team."
     },
     scope: {
       it: ["Rilievo geometrico di base", "Preparazione elaborati per committenza", "Coordinamento informazioni di progetto"],
@@ -78,8 +78,8 @@ export const portfolio: CaseStudy[] = [
       en: "Documentation update and technical review for productive/commercial spaces."
     },
     description: {
-      it: "Testo provvisorio: intervento mirato a migliorare organizzazione degli elaborati e coerenza delle informazioni operative.",
-      en: "Temporary text: intervention focused on improving deliverable organization and consistency of operational information."
+      it: "Contesto: aggiornamento tecnico in ambito produttivo/commerciale con necessita di allineamento documentale. Obiettivo: migliorare la coerenza tra stato di fatto ed elaborati operativi. Attivita svolte: verifica tecnica, revisione disegni e coordinamento delle informazioni. Elaborati/output: disegni aggiornati e documentazione ordinata per uso operativo.",
+      en: "Context: technical update in a production/commercial setting requiring documentation alignment. Objective: improve consistency between as-built conditions and operational deliverables. Activities performed: technical verification, drawing revision and information coordination. Deliverables/output: updated drawings and organized documentation for operational use."
     },
     scope: {
       it: ["Verifica stato di fatto", "Aggiornamento disegni operativi", "Allineamento documentazione"],
@@ -101,8 +101,8 @@ export const portfolio: CaseStudy[] = [
       en: "Work focused on producing clear technical references for evaluations on a historic building."
     },
     description: {
-      it: "Testo provvisorio: commessa impostata per fornire materiale consultabile in modo rapido da direzione lavori, progettisti e committente.",
-      en: "Temporary text: assignment structured to provide quickly consultable material for site management, designers and client."
+      it: "Contesto: contesto storico con necessita di riferimenti tecnici chiari per piu figure professionali. Obiettivo: rendere immediata la lettura tecnica per direzione lavori, progettisti e committenza. Attivita svolte: elaborazione grafica di base, supporto interpretativo e organizzazione documentale. Elaborati/output: materiale tecnico consultabile e coerente con le esigenze operative.",
+      en: "Context: heritage setting requiring clear technical references for multiple professional roles. Objective: make technical interpretation immediate for site management, designers and client. Activities performed: baseline graphic processing, interpretative support and documentation organization. Deliverables/output: consultable technical material aligned with operational needs."
     },
     scope: {
       it: ["Elaborazione base grafica", "Supporto alla lettura tecnica", "Condivisione struttura documentale"],
@@ -124,8 +124,8 @@ export const portfolio: CaseStudy[] = [
       en: "Preliminary activity to structure data and references for following phases."
     },
     description: {
-      it: "Testo provvisorio: lavoro finalizzato a ottenere una base informativa ordinata, con priorita su chiarezza e tracciabilita.",
-      en: "Temporary text: project aimed at creating an ordered information baseline with priority on clarity and traceability."
+      it: "Contesto: attivita preliminare in ambito ambientale per la definizione dello stato di fatto. Obiettivo: costruire una base informativa ordinata e tracciabile per sviluppi successivi. Attivita svolte: acquisizione dati, restituzione sintetica e organizzazione degli output. Elaborati/output: riferimenti tecnici utili alla pianificazione delle fasi successive.",
+      en: "Context: preliminary environmental activity aimed at defining existing conditions. Objective: build an organized and traceable information baseline for subsequent developments. Activities performed: data acquisition, concise restitution and output organization. Deliverables/output: technical references supporting planning of next phases."
     },
     scope: {
       it: ["Acquisizione contenuti", "Restituzione sintetica", "Organizzazione output"],
@@ -147,8 +147,8 @@ export const portfolio: CaseStudy[] = [
       en: "Technical setup supporting evaluations and preliminary choices."
     },
     description: {
-      it: "Testo provvisorio: produzione di un quadro tecnico leggibile per facilitare confronto tra parti coinvolte.",
-      en: "Temporary text: production of a readable technical framework to support stakeholder alignment."
+      it: "Contesto: studio tecnico preliminare a supporto di valutazioni in ambito infrastrutturale locale. Obiettivo: facilitare il confronto decisionale tra i soggetti coinvolti. Attivita svolte: raccolta elementi tecnici, strutturazione tavole e sintesi operativa. Elaborati/output: quadro tecnico leggibile per analisi e condivisione.",
+      en: "Context: preliminary technical study supporting evaluations in local infrastructure context. Objective: facilitate decision discussions among stakeholders. Activities performed: collection of technical elements, sheet structuring and operational synthesis. Deliverables/output: readable technical framework for analysis and sharing."
     },
     scope: {
       it: ["Raccolta elementi utili", "Strutturazione tavole", "Sintesi informazioni operative"],
@@ -170,8 +170,8 @@ export const portfolio: CaseStudy[] = [
       en: "Graphic output designed for immediate technical communication with client and team."
     },
     description: {
-      it: "Testo provvisorio: intervento centrato su qualita visiva, coerenza documentale e semplificazione del confronto decisionale.",
-      en: "Temporary text: intervention focused on visual quality, documentation consistency and easier decision-making discussions."
+      it: "Contesto: elaborato prospettico per contesto residenziale con esigenza di comunicazione tecnica immediata. Obiettivo: rendere piu chiaro il confronto tra alternative e scelte progettuali. Attivita svolte: impostazione visuale, verifica coerenza dei riferimenti tecnici e preparazione materiali. Elaborati/output: prospettive e tavole orientate alla lettura tecnica del progetto.",
+      en: "Context: perspective deliverable for a residential context requiring immediate technical communication. Objective: clarify comparisons between alternatives and design choices. Activities performed: visual setup, consistency checks of technical references and material preparation. Deliverables/output: perspectives and sheets focused on technical project readability."
     },
     scope: {
       it: ["Impostazione visuale", "Coerenza riferimenti tecnici", "Condivisione output"],
@@ -193,8 +193,8 @@ export const portfolio: CaseStudy[] = [
       en: "Technical support on a road segment with documentation for operational phases and design discussions."
     },
     description: {
-      it: "Testo provvisorio: lavoro costruito per dare continuita tra rilievo, tavole e decisioni in cantiere.",
-      en: "Temporary text: work built to ensure continuity between survey, technical drawings and on-site decisions."
+      it: "Contesto: intervento su viabilita locale con necessita di continuita tra rilievo e fase esecutiva. Obiettivo: supportare lettura tecnica e coordinamento delle attivita di cantiere. Attivita svolte: rilievi di supporto, impostazione elaborati e condivisione operativa delle informazioni. Elaborati/output: documentazione tecnica utile al confronto progettuale e alla gestione in cantiere.",
+      en: "Context: local road intervention requiring continuity between survey data and execution phase. Objective: support technical interpretation and coordination of site activities. Activities performed: support surveys, deliverable setup and operational sharing of information. Deliverables/output: technical documentation useful for design review and site management."
     },
     scope: {
       it: ["Raccolta rilievi di supporto", "Impostazione elaborati di cantiere", "Lettura tecnica condivisa"],
@@ -220,8 +220,8 @@ export const portfolio: CaseStudy[] = [
       en: "Visual documentation support in a monumental context."
     },
     description: {
-      it: "Testo provvisorio: attivita tecnica orientata a una restituzione ordinata e utile alla pianificazione delle lavorazioni.",
-      en: "Temporary text: technical activity aimed at an ordered deliverable useful for planning work phases."
+      it: "Contesto: bene monumentale con necessita di restituzioni ordinate e coerenti con il valore del contesto. Obiettivo: fornire una base tecnica utile alla pianificazione delle lavorazioni. Attivita svolte: produzione grafica, strutturazione contenuti e coordinamento delle informazioni. Elaborati/output: elaborati tecnici consultabili per programmazione e confronto operativo.",
+      en: "Context: monumental asset requiring structured deliverables consistent with the heritage setting. Objective: provide a technical baseline useful for planning work phases. Activities performed: graphic production, content structuring and information coordination. Deliverables/output: technical outputs suitable for planning and operational review."
     },
     scope: {
       it: ["Produzione base grafica", "Strutturazione contenuti", "Condivisione per team di lavoro"],
@@ -243,8 +243,8 @@ export const portfolio: CaseStudy[] = [
       en: "Image collection and visual checks to monitor progress and support operational reviews."
     },
     description: {
-      it: "Testo provvisorio: commessa finalizzata a rendere immediata la lettura dello stato lavori per attori tecnici e decisionali.",
-      en: "Temporary text: assignment aimed at making work-progress interpretation immediate for technical and decision stakeholders."
+      it: "Contesto: cantiere infrastrutturale con necessita di monitoraggio visivo ordinato dello stato avanzamento. Obiettivo: rendere chiara e tempestiva la lettura dell'avanzamento per soggetti tecnici e decisionali. Attivita svolte: raccolta immagini, verifica visiva e organizzazione del report. Elaborati/output: documentazione fotografica strutturata a supporto del controllo operativo.",
+      en: "Context: infrastructure site requiring structured visual monitoring of work progress. Objective: provide clear and timely progress interpretation for technical and decision stakeholders. Activities performed: image collection, visual checks and report organization. Deliverables/output: structured photographic documentation supporting operational control."
     },
     scope: {
       it: ["Report fotografico strutturato", "Allineamento stato lavori", "Supporto comunicazione tecnica"],
@@ -266,8 +266,8 @@ export const portfolio: CaseStudy[] = [
       en: "Technical production focused on clarity and usability of project content."
     },
     description: {
-      it: "Testo provvisorio: intervento impostato per consolidare una base tecnica ordinata, pronta per revisioni e sviluppi successivi.",
-      en: "Temporary text: intervention structured to consolidate an ordered technical baseline ready for revisions and further development."
+      it: "Contesto: supporto grafico in ambito urbano con esigenza di uniformare riferimenti tecnici e materiali condivisi. Obiettivo: consolidare una base tecnica ordinata per revisioni e sviluppi successivi. Attivita svolte: impostazione elaborati, controllo coerenza dati e preparazione della documentazione. Elaborati/output: materiale tecnico pronto per confronto, verifica e aggiornamenti.",
+      en: "Context: graphic support in an urban setting with need to align technical references and shared materials. Objective: consolidate an ordered technical baseline for revisions and further development. Activities performed: deliverable setup, data consistency checks and documentation preparation. Deliverables/output: technical material ready for review, verification and updates."
     },
     scope: {
       it: ["Impostazione elaborato", "Controllo coerenza dati", "Preparazione materiale condivisibile"],
