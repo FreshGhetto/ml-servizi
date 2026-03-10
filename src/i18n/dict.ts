@@ -3,7 +3,7 @@ export type Lang = "it" | "en";
 // TODO: Replace with the exact address shown on Google Business / Google Maps.
 const ADDRESS: Record<Lang, string> = {
   it: "Via Banchina dell' Azoto, 15, 30175 Venezia VE",
-  en: "Via Banchina dell' Azoto, 15, 30175 Venezia VE"
+  en: "Via Banchina dell' Azoto, 15, 30175 Venice VE, Italy"
 };
 
 export const dict: Record<Lang, any> = {
@@ -94,7 +94,7 @@ export const dict: Record<Lang, any> = {
       cta: "Request a quote"
     },
     Home: {
-      heroTitle: "Technical studio for surveying, construction accounting and 3D modelling",
+      heroTitle: "Technical studio for surveying, bills of quantities and cost estimating, construction accounting, and 2D/3D modelling",
       heroSubtitle:
         "ML Servizi is the technical studio of Geom. Diego Bacci. We support professional firms, contractors, institutions, property managers and private clients in technical surveys, site documentation, bills of quantities, construction accounting and 2D/3D digital deliverables.",
       primaryCta: "Request a quote",

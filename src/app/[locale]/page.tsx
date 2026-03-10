@@ -28,7 +28,7 @@ export async function generateMetadata({
     title:
       locale === "it"
         ? "Studio tecnico per rilievi, computi metrici estimativi, contabilità lavori e modellazione 2D/3D"
-        : "ML Servizi - Surveying, Construction Accounting and 3D Modelling",
+        : "Technical studio for surveying, bills of quantities and cost estimating, construction accounting, and 2D/3D modelling",
     description: d.Home.heroSubtitle,
     keywords:
       locale === "it"

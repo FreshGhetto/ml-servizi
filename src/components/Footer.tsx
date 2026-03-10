@@ -51,7 +51,7 @@ export async function Footer({locale}: {locale: Locale}) {
                   +39 351 544 7413
                 </a>
               </li>
-              <li>P.IVA: <span className="text-[rgb(var(--fg))]">{CONTACT_VAT}</span></li>
+              <li>{locale === "it" ? "P.IVA" : "VAT ID"}: <span className="text-[rgb(var(--fg))]">{CONTACT_VAT}</span></li>
             </ul>
             <div className="mt-4 flex gap-4">
               <Link
