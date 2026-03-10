@@ -10,7 +10,7 @@ import {HeroSection} from "@/components/HeroSection";
 import {services} from "@/content/services";
 import {portfolio} from "@/content/portfolio";
 import {MotionCard} from "@/components/motion/MotionCard";
-import {SafeImage} from "@/components/ui/SafeImage";
+import {SelectedWorkRotator} from "@/components/portfolio/SelectedWorkRotator";
 import {buildBreadcrumbJsonLd, buildItemListJsonLd, buildLocalizedMetadata, localizedUrl} from "@/lib/seo";
 
 export async function generateMetadata({
@@ -135,40 +135,7 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
       <section className="py-14">
         <Container>
           <SectionTitle title={t.workTitle} subtitle={t.workDesc} />
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {portfolio.slice(0, 2).map((p) => (
-              <MotionCard key={p.slug} className="h-full">
-                <Link
-                  href={`/${locale}/portfolio/${p.slug}`}
-                  className="relative block aspect-[4/3] overflow-hidden no-underline sm:aspect-[16/10]"
-                  aria-label={`${locale === "it" ? "Apri lavoro" : "Open work"}: ${p.title[locale]}`}
-                >
-                  <SafeImage
-                    src={p.cardImage ?? p.coverImage}
-                    alt={`${p.title[locale]} - ${p.location[locale]}`}
-                    fallbackSrc="/hero/03.jpg"
-                    fill
-                    quality={46}
-                    className="object-cover scale-[1.006] transform-gpu"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/4 to-transparent opacity-0 transition-opacity duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100" />
-                </Link>
-                <div className="p-5 sm:p-6">
-                  <div className="text-base font-semibold text-[rgb(var(--fg))] sm:text-[1.05rem]">{p.title[locale]}</div>
-                  <p className="link- mt-1 text-sm text-[rgb(var(--muted))]">{p.location[locale]}</p>
-                  <p className="link- mt-3 text-sm leading-relaxed text-[rgb(var(--muted))]">{p.summary[locale]}</p>
-                  <Link
-                    className="mt-4 inline-flex text-sm font-medium text-blue-700 transition-colors hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200"
-                    href={`/${locale}/portfolio/${p.slug}`}
-                  >
-                    {t.seeWork} →
-                  </Link>
-                </div>
-              </MotionCard>
-            ))}
-          </div>
+          <SelectedWorkRotator locale={locale} items={portfolio} seeWorkLabel={t.seeWork} />
           <div className="mt-8 flex justify-center">
             <Link
               className="group inline-flex items-center gap-2 rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-4 py-2 text-sm font-medium text-blue-700 transition-colors duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-blue-300/70 hover:bg-blue-50/55 hover:text-blue-600 active:bg-blue-100/60 dark:text-blue-300 dark:hover:border-blue-500/60 dark:hover:bg-blue-950/40 dark:hover:text-blue-200 dark:active:bg-blue-950/50"

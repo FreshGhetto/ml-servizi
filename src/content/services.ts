@@ -66,7 +66,7 @@ export const services: Service[] = [
   {
     slug: "modello-3d-archicad",
     category: "modeling",
-    title: { it: "Modellazione 3D (Archicad)", en: "3D modelling (Archicad)" },
+    title: { it: "Modellazione 3D", en: "3D modelling" },
     short: {
       it: "Produzione di elaborati 2D/3D e modelli tecnici per supportare progettazione, coordinamento e condivisione.",
       en: "Production of 2D/3D deliverables and technical models to support design, coordination and communication."
