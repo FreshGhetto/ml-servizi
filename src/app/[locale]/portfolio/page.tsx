@@ -84,6 +84,7 @@ export default async function PortfolioPage({params}: {params: Promise<{locale: 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/4 to-transparent opacity-0 transition-opacity duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-t from-black/35 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                 <div className="flex flex-col items-start gap-3">
                   <p className="inline-flex w-fit rounded-full bg-black/70 px-2.5 py-1 text-sm font-medium tracking-[0.08em] text-white shadow-[0_4px_14px_rgba(0,0,0,0.35)]">
