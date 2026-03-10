@@ -114,7 +114,7 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
         <Chevron dir="right" />
       </button>
 
-      <div ref={emblaRef} className="overflow-hidden">
+      <div ref={emblaRef} className="overflow-hidden px-2 py-3 md:px-3">
         <div className="-ml-6 flex touch-pan-y">
           {items.map((item) => (
             <div key={item.slug} className="min-w-0 flex-[0_0_100%] pl-6 md:flex-[0_0_50%]">
@@ -126,4 +126,3 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
     </div>
   );
 }
-
