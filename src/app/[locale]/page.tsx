@@ -138,7 +138,11 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {portfolio.slice(0, 2).map((p) => (
               <MotionCard key={p.slug} className="h-full">
-                <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
+                <Link
+                  href={`/${locale}/portfolio/${p.slug}`}
+                  className="relative block aspect-[4/3] overflow-hidden no-underline sm:aspect-[16/10]"
+                  aria-label={`${locale === "it" ? "Apri lavoro" : "Open work"}: ${p.title[locale]}`}
+                >
                   <SafeImage
                     src={p.cardImage ?? p.coverImage}
                     alt={`${p.title[locale]} - ${p.location[locale]}`}
@@ -150,17 +154,17 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/4 to-transparent opacity-0 transition-opacity duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100" />
-                </div>
+                </Link>
                 <div className="p-5 sm:p-6">
                   <div className="text-base font-semibold text-[rgb(var(--fg))] sm:text-[1.05rem]">{p.title[locale]}</div>
                   <p className="link- mt-1 text-sm text-[rgb(var(--muted))]">{p.location[locale]}</p>
                   <p className="link- mt-3 text-sm leading-relaxed text-[rgb(var(--muted))]">{p.summary[locale]}</p>
-                  <a
+                  <Link
                     className="mt-4 inline-flex text-sm font-medium text-blue-700 transition-colors hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-200"
                     href={`/${locale}/portfolio/${p.slug}`}
                   >
                     {t.seeWork} →
-                  </a>
+                  </Link>
                 </div>
               </MotionCard>
             ))}

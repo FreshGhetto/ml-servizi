@@ -72,7 +72,11 @@ export default async function PortfolioPage({params}: {params: Promise<{locale: 
       <div className="mt-10 grid gap-6 sm:gap-7 md:grid-cols-2">
         {portfolio.map((item) => (
           <MotionCard key={item.slug} className="h-full">
-            <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
+            <Link
+              href={`/${locale}/portfolio/${item.slug}`}
+              className="relative block aspect-[4/3] overflow-hidden no-underline sm:aspect-[16/10]"
+              aria-label={`${locale === "it" ? "Apri lavoro" : "Open work"}: ${L(item.title)}`}
+            >
               <SafeImage
                 src={item.cardImage ?? item.coverImage}
                 alt={`${L(item.title)} - ${L(item.location)}`}
@@ -94,7 +98,7 @@ export default async function PortfolioPage({params}: {params: Promise<{locale: 
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
 
             <div className="p-5 sm:p-6 lg:p-7">
               <div className="text-base font-semibold text-[rgb(var(--fg))] sm:text-lg">{L(item.title)}</div>
