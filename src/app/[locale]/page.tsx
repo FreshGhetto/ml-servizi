@@ -149,7 +149,7 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
                     fallbackSrc="/hero/03.jpg"
                     fill
                     quality={46}
-                    className="object-cover"
+                    className="object-cover scale-[1.006] transform-gpu"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent" />
