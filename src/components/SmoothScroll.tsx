@@ -2,8 +2,21 @@
 
 import {useEffect} from "react";
 import Lenis from "lenis";
+import {usePathname} from "next/navigation";
 
 export function SmoothScroll() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const rafId = window.requestAnimationFrame(() => {
+      window.scrollTo({top: 0, left: 0, behavior: "auto"});
+    });
+
+    return () => window.cancelAnimationFrame(rafId);
+  }, [pathname]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
