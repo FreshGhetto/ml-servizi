@@ -138,19 +138,18 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {portfolio.slice(0, 2).map((p) => (
               <MotionCard key={p.slug} className="h-full">
-                <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+                <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/10]">
                   <SafeImage
                     src={p.cardImage ?? p.coverImage}
                     alt={`${p.title[locale]} - ${p.location[locale]}`}
                     fallbackSrc="/hero/03.jpg"
                     fill
                     quality={46}
-                    className="object-cover scale-[1.015] transform-gpu"
+                    className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/14 via-black/4 to-transparent" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/4 to-transparent opacity-0 transition-opacity duration-180 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-focus-within:opacity-100" />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-[rgb(var(--bg))]" />
                 </div>
                 <div className="p-5 sm:p-6">
                   <div className="text-base font-semibold text-[rgb(var(--fg))] sm:text-[1.05rem]">{p.title[locale]}</div>
