@@ -72,7 +72,7 @@ export default async function PortfolioPage({params}: {params: Promise<{locale: 
       <div className="mt-10 grid gap-6 sm:gap-7 md:grid-cols-2">
         {portfolio.map((item) => (
           <MotionCard key={item.slug} className="h-full">
-            <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+            <div className="relative -mb-px aspect-[4/3] sm:aspect-[16/10]">
               <SafeImage
                 src={item.cardImage ?? item.coverImage}
                 alt={`${L(item.title)} - ${L(item.location)}`}

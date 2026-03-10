@@ -138,7 +138,7 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {portfolio.slice(0, 2).map((p) => (
               <MotionCard key={p.slug} className="h-full">
-                <div className="relative aspect-[4/3] sm:aspect-[16/10]">
+                <div className="relative -mb-px aspect-[4/3] sm:aspect-[16/10]">
                   <SafeImage
                     src={p.cardImage ?? p.coverImage}
                     alt={`${p.title[locale]} - ${p.location[locale]}`}
