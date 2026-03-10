@@ -62,7 +62,7 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
   const autoplay = useMemo(
     () =>
       Autoplay({
-        delay: 5200,
+        delay: 5000,
         stopOnMouseEnter: true,
         stopOnInteraction: false
       }),
