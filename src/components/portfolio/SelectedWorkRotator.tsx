@@ -116,7 +116,7 @@ export function SelectedWorkRotator({locale, items, seeWorkLabel}: SelectedWorkR
       </button>
 
       <div ref={emblaRef} className="overflow-hidden -mx-4 px-4 py-5 md:-mx-6 md:px-6">
-        <div className="-ml-6 flex touch-pan-y transform-gpu will-change-transform">
+        <div className="-ml-6 flex touch-pan-y transform-gpu px-2 will-change-transform md:px-3">
           {items.map((item) => (
             <div key={item.slug} className="min-w-0 flex-[0_0_100%] pl-6 md:flex-[0_0_50%]">
               <WorkCard item={item} locale={locale} seeWorkLabel={seeWorkLabel} />
